@@ -3,15 +3,21 @@ using UnityEngine.InputSystem;
 
 public class GunShoot : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private Transform player; // Reference to the player transform
     [SerializeField] private Rigidbody2D playerRb; // Reference to the player's Rigidbody2D component
-    
+    [SerializeField] private Transform gun;
+    [SerializeField] private GameObject bulletPrefab; // Reference to the bullet prefab
+
+    [Header("Settings")]
     [SerializeField] private float slideForceAmt = 50f;
     [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float dragAmt = 5f;
+    [SerializeField] private float bulletForce = 10f;
 
     private void FixedUpdate() {
         if (playerRb != null) {
+            // Apply drag to the player's Rigidbody2D so it doesnt slide forever
             if (playerRb.linearVelocity.magnitude > maxSpeed) {
                 playerRb.linearVelocity = playerRb.linearVelocity.normalized * maxSpeed;
             }
@@ -29,10 +35,19 @@ public class GunShoot : MonoBehaviour
             Debug.LogError("Player Rigidbody2D is not assigned.");
             return;
         }
+        if (gun == null) {
+            Debug.LogError("Gun transform is not assigned.");
+            return;
+        }
+        if (bulletPrefab == null) {
+            Debug.LogError("Bullet prefab is not assigned.");
+            return;
+        }
 
         if (context.performed) {
             FacePlayerToMouseClick();
             MovePlayerAwayFromClick();
+            FireBullet();
         }
     }
 
@@ -54,5 +69,22 @@ public class GunShoot : MonoBehaviour
         Vector3 direction = GetDirectionOfMouseClick();
         Vector3 moveDirection = -direction.normalized;
         playerRb.AddForce(moveDirection * slideForceAmt, ForceMode2D.Impulse);
+    }
+
+    private void FireBullet() {
+        Vector3 direction = GetDirectionOfMouseClick();
+
+        GameObject bullet = Instantiate(bulletPrefab, gun.position, Quaternion.identity);
+        Rigidbody2D bulletRbInstance = bullet.GetComponent<Rigidbody2D>();
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        bullet.transform.rotation = Quaternion.Euler(0, 0, angle + 90f);
+
+        if (bulletRbInstance != null) {
+            bulletRbInstance.AddForce(direction * bulletForce, ForceMode2D.Impulse);
+        }
+        else {
+            Debug.LogError("Instantiated bullet has no Rigidbody2D component.");
+        }
     }
 }

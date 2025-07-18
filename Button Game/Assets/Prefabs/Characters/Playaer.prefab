@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 2388416419965161369}
   m_Layer: 0
   m_Name: Playaer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,9 +256,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2614855445429720732}
   playerRb: {fileID: 4493934888198486447}
+  gun: {fileID: 755466173613728473}
+  bulletPrefab: {fileID: 9100421380994185438, guid: 0c8232dc723b0d74baf01c823a361672, type: 3}
+  bulletRb: {fileID: 6455613470515967796, guid: 0c8232dc723b0d74baf01c823a361672, type: 3}
   slideForceAmt: 50
   maxSpeed: 5
   dragAmt: 5
+  bulletForce: 10
 --- !u!114 &2388416419965161369
 MonoBehaviour:
   m_ObjectHideFlags: 0
