@@ -12,6 +12,7 @@ public class CameraFollow : MonoBehaviour
             Debug.LogError("Player transform is not assigned.");
             return;
         }
+
         // Calculate the desired position of the camera
         Vector3 desiredPosition = player.position + offset;
         // Smoothly interpolate between the current position and the desired position

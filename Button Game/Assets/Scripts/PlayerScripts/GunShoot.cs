@@ -74,17 +74,27 @@ public class GunShoot : MonoBehaviour
     private void FireBullet() {
         Vector3 direction = GetDirectionOfMouseClick();
 
-        GameObject bullet = Instantiate(bulletPrefab, gun.position, Quaternion.identity);
+        // GameObject bullet = Instantiate(bulletPrefab, gun.position, Quaternion.identity);
+        GameObject bullet = ObjectPoolManager.SpawnObject(bulletPrefab, gun.position, Quaternion.identity);
         Rigidbody2D bulletRbInstance = bullet.GetComponent<Rigidbody2D>();
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         bullet.transform.rotation = Quaternion.Euler(0, 0, angle + 90f);
 
         if (bulletRbInstance != null) {
+            bulletRbInstance.linearVelocity = Vector2.zero;
             bulletRbInstance.AddForce(direction * bulletForce, ForceMode2D.Impulse);
         }
         else {
             Debug.LogError("Instantiated bullet has no Rigidbody2D component.");
         }
+
+        // Destroy(bullet, 2f); // Destroy the bullet after 2 seconds to prevent clutter
+        StartCoroutine(ReturnToPoolAfterDelay(bullet, 2f));
+    }
+
+    private System.Collections.IEnumerator ReturnToPoolAfterDelay(GameObject bullet, float delay) {
+        yield return new WaitForSeconds(delay);
+        ObjectPoolManager.ReturnObjectToPool(bullet);
     }
 }
