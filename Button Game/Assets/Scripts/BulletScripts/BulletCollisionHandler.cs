@@ -15,8 +15,8 @@ public class BulletCollisonHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Enemy")) {
-            Destroy(collision.gameObject);
-            ReturnToPool();
+            ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
+            ObjectPoolManager.ReturnObjectToPool(gameObject);
         }
     }
 
