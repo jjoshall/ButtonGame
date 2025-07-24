@@ -20,11 +20,12 @@ public class RegBullet : MonoBehaviour
             Debug.LogError("Instantiated bullet has no Rigidbody2D component.");
         }
 
-        StartCoroutine(ReturnToPoolAfterDelay(bullet, bulletLifetime));
-    }
-
-    private System.Collections.IEnumerator ReturnToPoolAfterDelay(GameObject bullet, float delay) {
-        yield return new WaitForSeconds(delay);
-        ObjectPoolManager.ReturnObjectToPool(bullet);
+        BulletCollisonHandler handler = bullet.GetComponent<BulletCollisonHandler>();
+        if (handler != null) {
+            handler.SetLifetime(bulletLifetime);
+        }
+        else {
+            Debug.LogError("Instantiated bullet has no BulletCollisonHandler component.");
+        }
     }
 }
