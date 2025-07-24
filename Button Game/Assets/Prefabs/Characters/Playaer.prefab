@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 4493934888198486447}
   - component: {fileID: 2388416419965161369}
   - component: {fileID: 6583683555381590650}
+  - component: {fileID: -80030245510144035}
   m_Layer: 0
   m_Name: Playaer
   m_TagString: Player
@@ -304,7 +305,22 @@ MonoBehaviour:
   playerRb: {fileID: 4493934888198486447}
   gun: {fileID: 755466173613728473}
   bulletPrefab: {fileID: 9100421380994185438, guid: 0c8232dc723b0d74baf01c823a361672, type: 3}
+  regBullet: {fileID: -80030245510144035}
   slideForceAmt: 50
   maxSpeed: 5
   dragAmt: 5
   bulletForce: 10
+--- !u!114 &-80030245510144035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7841378068198206770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b861f8bed6b61479d8180e2f9c472f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletForce: 10
+  bulletLifetime: 2
