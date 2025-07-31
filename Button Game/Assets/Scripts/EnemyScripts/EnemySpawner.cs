@@ -4,7 +4,7 @@ public class EnemySpawner : MonoBehaviour
 {
     private float timer;
     public float spawnTimer = 2f;
-    [SerializeField] private float spawnRadius = 10f;
+    [SerializeField] private float spawnRadius = 50f;
 
     [SerializeField] private GameObject enemyToSpawn;
 
