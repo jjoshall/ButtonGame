@@ -8,12 +8,14 @@ public class ObjectPoolManager : MonoBehaviour {
     private GameObject _emptyHolder;
 
     private static GameObject _gameObjectsEmpty;
+    private static GameObject _particleSystemsEmpty;
 
     private static Dictionary<GameObject, ObjectPool<GameObject>> _objectPools;
     private static Dictionary<GameObject, GameObject> _cloneToPrefabMap;
 
     public enum PoolType {
-        GameObjects
+        GameObjects,
+        ParticleSystems
     }
     public static PoolType PoolingType;
 
@@ -29,6 +31,9 @@ public class ObjectPoolManager : MonoBehaviour {
 
         _gameObjectsEmpty = new GameObject("GameObjects");
         _gameObjectsEmpty.transform.SetParent(_emptyHolder.transform);
+
+        _particleSystemsEmpty = new GameObject("Particle Effects");
+        _particleSystemsEmpty.transform.SetParent(_emptyHolder.transform);
 
         if (_addToDontDestroyOnLoad) {
             DontDestroyOnLoad(_gameObjectsEmpty.transform.root);
@@ -77,6 +82,8 @@ public class ObjectPoolManager : MonoBehaviour {
         switch (poolType) {
             case PoolType.GameObjects:
                 return _gameObjectsEmpty;
+            case PoolType.ParticleSystems:
+                return _particleSystemsEmpty;
             default:
                 Debug.LogError("Invalid Pool Type");
                 return null;

@@ -394,6 +394,7 @@ MonoBehaviour:
   gun: {fileID: 755466173613728473}
   bulletPrefab: {fileID: 9100421380994185438, guid: 0c8232dc723b0d74baf01c823a361672, type: 3}
   regBullet: {fileID: -80030245510144035}
+  dashEffect: {fileID: 6224653128371713681, guid: f8fc104b200510440bb1c0e2ca721fde, type: 3}
   slideForceAmt: 100
   maxSpeed: 5
   dragAmt: 3
