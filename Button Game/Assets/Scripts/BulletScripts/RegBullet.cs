@@ -4,6 +4,7 @@ public class RegBullet : MonoBehaviour
 {
     [SerializeField] private float bulletForce = 10f;
     [SerializeField] private float bulletLifetime = 2f;
+    [SerializeField] private float hitStopDuration = 0.05f;    
 
     public void FireBullet(GameObject bulletPrefab, Vector3 gunPosition, Vector3 shootDirection) {
         GameObject bullet = ObjectPoolManager.SpawnObject(bulletPrefab, gunPosition, Quaternion.identity);
@@ -23,6 +24,7 @@ public class RegBullet : MonoBehaviour
         BulletCollisonHandler handler = bullet.GetComponent<BulletCollisonHandler>();
         if (handler != null) {
             handler.SetLifetime(bulletLifetime);
+            handler.SetHitStopDuration(hitStopDuration);
         }
         else {
             Debug.LogError("Instantiated bullet has no BulletCollisonHandler component.");

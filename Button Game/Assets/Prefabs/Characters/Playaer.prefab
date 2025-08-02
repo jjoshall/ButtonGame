@@ -189,6 +189,8 @@ GameObject:
   - component: {fileID: 2388416419965161369}
   - component: {fileID: 6583683555381590650}
   - component: {fileID: -80030245510144035}
+  - component: {fileID: 1437824137148026235}
+  - component: {fileID: 3075295749106761740}
   m_Layer: 0
   m_Name: Playaer
   m_TagString: Player
@@ -205,8 +207,8 @@ Transform:
   m_GameObject: {fileID: 7841378068198206770}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.67, y: -2.79, z: 0}
-  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
+  m_LocalPosition: {x: 0.14029, y: -2.79, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 755466173613728473}
@@ -395,9 +397,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 9100421380994185438, guid: 0c8232dc723b0d74baf01c823a361672, type: 3}
   regBullet: {fileID: -80030245510144035}
   dashEffect: {fileID: 6224653128371713681, guid: f8fc104b200510440bb1c0e2ca721fde, type: 3}
-  slideForceAmt: 100
+  shotFeedback: {fileID: 3075295749106761740}
+  slideForceAmt: 500
   maxSpeed: 5
-  dragAmt: 3
+  dragAmt: 2
 --- !u!114 &-80030245510144035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,3 +415,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletForce: 10
   bulletLifetime: 2
+  hitStopDuration: 0.05
+--- !u!114 &1437824137148026235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7841378068198206770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87752005b7e91a64b977ba5f92c1275b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3075295749106761740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7841378068198206770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 538d202c284d90242ab1eeed8ba1e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2614855445429720732}
+  recoilScale: 1.2
+  recoilDuration: 0.1
+  recoilCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

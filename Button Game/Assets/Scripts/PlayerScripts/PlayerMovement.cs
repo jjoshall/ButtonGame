@@ -9,8 +9,9 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private GameObject bulletPrefab; // Reference to the bullet prefab
     [SerializeField] private RegBullet regBullet; // Reference to the RegBullet script for firing bullets
     [SerializeField] private ParticleSystem dashEffect; // Reference to the dash effect particle system
+    [SerializeField] private ShotFeedback shotFeedback; // Reference to the shot feedback script
 
-    [Header("Settings")]
+    [Header("Dash Settings")]
     [SerializeField] private float slideForceAmt = 50f;
     [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float dragAmt = 5f;
@@ -58,6 +59,7 @@ public class PlayerMovement : MonoBehaviour {
             regBullet.FireBullet(bulletPrefab, gun.position, direction);
 
             PlayDashEffect(direction);
+            shotFeedback.PlayRecoil();
         }
     }
 
