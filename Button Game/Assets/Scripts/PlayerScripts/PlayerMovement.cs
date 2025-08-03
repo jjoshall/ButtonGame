@@ -33,6 +33,10 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    private void Update() {
+        FacePlayerToMouse();
+    }
+
     public void Shoot(InputAction.CallbackContext context) {
         if (player == null) {
             Debug.LogError("Player transform is not assigned.");
@@ -52,7 +56,6 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if (context.performed) {
-            FacePlayerToMouseClick();
             MovePlayerAwayFromClick();
 
             Vector3 direction = GetDirectionOfMouseClick();
@@ -71,7 +74,7 @@ public class PlayerMovement : MonoBehaviour {
         return (mouseWorldPosition - player.position).normalized;
     }
 
-    private void FacePlayerToMouseClick() {
+    private void FacePlayerToMouse() {
         Vector3 direction = GetDirectionOfMouseClick();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         player.rotation = Quaternion.Euler(0, 0, angle);

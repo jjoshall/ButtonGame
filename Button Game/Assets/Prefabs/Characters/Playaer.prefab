@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2614855445429720732}
-  recoilScale: 1.2
+  recoilScale: 1.4
   recoilDuration: 0.1
   recoilCurve:
     serializedVersion: 2
