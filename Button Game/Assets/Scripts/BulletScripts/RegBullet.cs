@@ -7,7 +7,7 @@ public class RegBullet : MonoBehaviour
     [SerializeField] private float hitStopDuration = 0.05f;    
 
     public void FireBullet(GameObject bulletPrefab, Vector3 gunPosition, Vector3 shootDirection) {
-        GameObject bullet = ObjectPoolManager.SpawnObject(bulletPrefab, gunPosition, Quaternion.identity);
+        GameObject bullet = ObjectPoolManager.SpawnObject(bulletPrefab, gunPosition + shootDirection.normalized * .5f, Quaternion.identity);
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
 
         float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
