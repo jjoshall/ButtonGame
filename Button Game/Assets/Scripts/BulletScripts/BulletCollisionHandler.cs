@@ -16,7 +16,6 @@ public class BulletCollisonHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Enemy")) {
-            Debug.Log("Hit stop duration: " + hitStopDuration);
             HitStop.Instance.DoHitStop(hitStopDuration);
 
             ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
