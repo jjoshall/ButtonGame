@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Update() {
-        FacePlayerToMouse();
+        FaceGunToMouse();
     }
 
     public void Shoot(InputAction.CallbackContext context) {
@@ -74,10 +74,10 @@ public class PlayerMovement : MonoBehaviour {
         return (mouseWorldPosition - player.position).normalized;
     }
 
-    private void FacePlayerToMouse() {
+    private void FaceGunToMouse() {
         Vector3 direction = GetDirectionOfMouseClick();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        player.rotation = Quaternion.Euler(0, 0, angle);
+        gun.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void MovePlayerAwayFromClick() {
