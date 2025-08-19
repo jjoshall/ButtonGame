@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private Transform player; // Reference to the player transform
     [SerializeField] private Rigidbody2D playerRb; // Reference to the player's Rigidbody2D component
     [SerializeField] private Transform gun;
+    [SerializeField] private Transform gunPivot;
     [SerializeField] private GameObject bulletPrefab; // Reference to the bullet prefab
     [SerializeField] private RegBullet regBullet; // Reference to the RegBullet script for firing bullets
     [SerializeField] private ParticleSystem dashEffect; // Reference to the dash effect particle system
@@ -77,7 +78,7 @@ public class PlayerMovement : MonoBehaviour {
     private void FaceGunToMouse() {
         Vector3 direction = GetDirectionOfMouseClick();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        gun.rotation = Quaternion.Euler(0, 0, angle);
+        gunPivot.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void MovePlayerAwayFromClick() {

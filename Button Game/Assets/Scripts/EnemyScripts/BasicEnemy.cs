@@ -1,7 +1,6 @@
 using UnityEngine;
 
-// This script will make the enemy follow the target.
-public class BasicEnemyNav : MonoBehaviour
+public class BasicEnemy : MonoBehaviour
 {
     private GameObject target;
     [SerializeField] private float moveSpeed = 2f;
@@ -10,6 +9,7 @@ public class BasicEnemyNav : MonoBehaviour
         target = PlayerMovement.Instance;
     }
 
+    // Enemy movement
     private void Update() {
         Vector2 direction = (target.transform.position - this.transform.position).normalized;
 
@@ -17,5 +17,16 @@ public class BasicEnemyNav : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(this.transform.position, target.transform.position, moveSpeed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Player")) {
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+            if (playerHealth != null) {
+                playerHealth.TakeDamage(10f); // Adjust damage as needed
+
+                ObjectPoolManager.ReturnObjectToPool(gameObject); // Return enemy to pool after hitting player
+            }
+        }
     }
 }
