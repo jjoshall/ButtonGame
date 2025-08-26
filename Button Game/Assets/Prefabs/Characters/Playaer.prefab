@@ -554,6 +554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2614855445429720732}
+  originalScale: {x: 1, y: 1, z: 1}
   recoilScale: 1.4
   recoilDuration: 0.1
   recoilCurve:
@@ -593,7 +594,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
   healthBar: {fileID: 9044660862675967809}
 --- !u!1 &8011742632936024864
 GameObject:

@@ -5,6 +5,7 @@ public class ShotFeedback : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform player; // Reference to the player transform
+    [SerializeField] private Vector3 originalScale; // Original scale of the player
 
     [Header("Recoil Settings")]
     [SerializeField] private float recoilScale = 1.2f; // Scale of the recoil effect
@@ -22,7 +23,7 @@ public class ShotFeedback : MonoBehaviour
     }
 
     private IEnumerator RecoilRoutine() {
-        Vector3 originalScale = player.localScale; // Store the original scale of the player
+        Vector3 playerOriginalScale = originalScale; // Store the original scale of the player
         float timer = 0f; // Timer for the recoil effect
 
         while (timer < recoilDuration) {
