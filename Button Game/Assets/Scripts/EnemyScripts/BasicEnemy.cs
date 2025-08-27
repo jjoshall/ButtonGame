@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class BasicEnemy : MonoBehaviour
 {
+    [Header("Movement")]
     private GameObject target;
     [SerializeField] private float moveSpeed = 2f;
 

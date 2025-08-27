@@ -166,6 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28bf9efc68d3344f9ebf0588685d9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDeathEffect: {fileID: 6224653128371713681, guid: 28c69757b53d50346bf44b2e01e88f88, type: 3}
+  enemyDeathSprites:
+  - {fileID: 3225442217125640922, guid: f360e99833c953045aa203c8ec76d203, type: 3}
+  - {fileID: 2156190549637636364, guid: ef81a9abafdea5844a8b9e26ec3b3965, type: 3}
+  - {fileID: 6889787418478081159, guid: 6f99edbfe137b174b84f00d6fc7979a1, type: 3}
 --- !u!96 &5736128242287681
 TrailRenderer:
   serializedVersion: 3
