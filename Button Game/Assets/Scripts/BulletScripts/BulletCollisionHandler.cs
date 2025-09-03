@@ -3,7 +3,7 @@ using UnityEngine;
 public class BulletCollisonHandler : MonoBehaviour
 {
     private float lifetime = 2f;
-    private float hitStopDuration = 0.1f;
+    private float hitStopDuration = 0.3f;
 
     [SerializeField] private ParticleSystem enemyDeathEffect;
     [SerializeField] private GameObject[] enemyDeathSprites;
