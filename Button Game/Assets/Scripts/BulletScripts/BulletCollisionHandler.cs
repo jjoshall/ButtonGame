@@ -8,7 +8,18 @@ public class BulletCollisonHandler : MonoBehaviour
     [SerializeField] private ParticleSystem enemyDeathEffect;
     [SerializeField] private GameObject[] enemyDeathSprites;
 
+    private Collider2D _collider;
+    private Rigidbody2D _rb;
+    private bool _hasProcessedHit;
+
+    private void Awake() {
+        _collider = GetComponent<Collider2D>();
+        _rb = GetComponent<Rigidbody2D>();
+    }
+
     private void OnEnable() {
+        _hasProcessedHit = false;
+        if (_collider) _collider.enabled = true;
         CancelInvoke();
         Invoke(nameof(ReturnToPool), lifetime);
     }
@@ -18,22 +29,33 @@ public class BulletCollisonHandler : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("Enemy")) {
-            HitStop.Instance.DoHitStop(hitStopDuration);
+        if (_hasProcessedHit || !collision.CompareTag("Enemy")) return;
+        _hasProcessedHit = true;
 
-            // Spawning enemy death effect
-            ObjectPoolManager.SpawnObject(enemyDeathEffect, collision.transform.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystems);
+        if (_collider) _collider.enabled = false;
+        if (_rb) _rb.linearVelocity = Vector2.zero;
 
-            // Random blood splatter sprite
-            if (enemyDeathSprites.Length > 0) {
-                int randomIndex = Random.Range(0, enemyDeathSprites.Length);
+        HitStop.Instance.DoHitStop(hitStopDuration);
 
-                ObjectPoolManager.SpawnObject(enemyDeathSprites[randomIndex], collision.transform.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystems);
-            }
+        ObjectPoolManager.SpawnObject(
+            enemyDeathEffect,
+            collision.transform.position,
+            Quaternion.identity,
+            ObjectPoolManager.PoolType.ParticleSystems
+        );
 
-            ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
-            ObjectPoolManager.ReturnObjectToPool(gameObject);
+        if (enemyDeathSprites != null && enemyDeathSprites.Length > 0) {
+            int randomIndex = Random.Range(0, enemyDeathSprites.Length);
+            ObjectPoolManager.SpawnObject(
+                enemyDeathSprites[randomIndex],
+                collision.transform.position,
+                Quaternion.identity,
+                ObjectPoolManager.PoolType.ParticleSystems
+            );
         }
+
+        ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
+        ReturnToPool();
     }
 
     private void ReturnToPool() {
