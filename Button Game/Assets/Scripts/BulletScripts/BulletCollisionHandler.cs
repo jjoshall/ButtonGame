@@ -37,6 +37,10 @@ public class BulletCollisonHandler : MonoBehaviour
 
         HitStop.Instance.DoHitStop(hitStopDuration);
 
+        // Add a random amount of xp between 10 and 30
+        int randomXP = Random.Range(10, 31);
+        XP.Instance.AddXP(randomXP);
+
         ObjectPoolManager.SpawnObject(
             enemyDeathEffect,
             collision.transform.position,
