@@ -17,7 +17,6 @@ public class XP : MonoBehaviour
     }
 
     public void AddXP(int amount) {
-        Debug.Log("Added " + amount + " XP");
         xpBar.value += amount;
     }
 }

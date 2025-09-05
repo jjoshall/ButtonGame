@@ -43,7 +43,7 @@ public class BulletCollisonHandler : MonoBehaviour
         // Add a random amount of xp between 10 and 30
         int randomXP = Random.Range(10, 31);
         XP.Instance.AddXP(randomXP);
-        xpNumText.text = randomXP.ToString();
+        xpNumText.text = "+" + randomXP.ToString();
 
         // For XP number popup
         ObjectPoolManager.SpawnObject(
@@ -52,8 +52,6 @@ public class BulletCollisonHandler : MonoBehaviour
             Quaternion.identity,
             ObjectPoolManager.PoolType.ParticleSystems
         );
-
-        
 
         // For the enemy death particles
         ObjectPoolManager.SpawnObject(

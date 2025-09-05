@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3075959076489063341}
   - component: {fileID: 7570377444180555687}
   - component: {fileID: 2457730662770447209}
+  - component: {fileID: 6744559845163804788}
   m_Layer: 0
   m_Name: XPNumber
   m_TagString: Untagged
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: +12
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -176,3 +177,17 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 7570377444180555687}
   m_maskType: 0
+--- !u!114 &6744559845163804788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6733635871390436447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4340bf751ea9dab4f8d1da8f22e44536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 2457730662770447209}
+  flashSpeed: 20

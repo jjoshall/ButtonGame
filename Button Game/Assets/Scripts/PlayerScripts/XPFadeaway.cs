@@ -1,16 +1,36 @@
+using TMPro;
 using UnityEngine;
 
 public class XPFadeaway : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    [SerializeField] private TMP_Text _text;
+    [SerializeField] private float flashSpeed = 5f;
+
+    private void OnEnable() {
+        if (_text == null) {
+            Debug.LogError("Text is not assigned in the XPFadeaway script.");
+            return;
+        }
+
+        Invoke(nameof(ReturnToPool), 2f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Update() {
+        if (_text == null) {
+            return;
+        }
+
+        float alpha = (Mathf.Sin(Time.time * flashSpeed) + 1f) / 2f; // Normalize to 0-1
+        Color c = _text.color;
+        c.a = alpha;
+        _text.color = c;
+    }
+
+    private void OnDisable() {
+        CancelInvoke();
+    }
+
+    private void ReturnToPool() {
+        ObjectPoolManager.ReturnObjectToPool(gameObject, ObjectPoolManager.PoolType.ParticleSystems);
     }
 }
