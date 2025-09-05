@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class BulletCollisonHandler : MonoBehaviour
@@ -7,6 +8,8 @@ public class BulletCollisonHandler : MonoBehaviour
 
     [SerializeField] private ParticleSystem enemyDeathEffect;
     [SerializeField] private GameObject[] enemyDeathSprites;
+    [SerializeField] private GameObject xpNumber;
+    [SerializeField] private TextMeshPro xpNumText;
 
     private Collider2D _collider;
     private Rigidbody2D _rb;
@@ -40,7 +43,19 @@ public class BulletCollisonHandler : MonoBehaviour
         // Add a random amount of xp between 10 and 30
         int randomXP = Random.Range(10, 31);
         XP.Instance.AddXP(randomXP);
+        xpNumText.text = randomXP.ToString();
 
+        // For XP number popup
+        ObjectPoolManager.SpawnObject(
+            xpNumber,
+            collision.transform.position + Vector3.up * 0.5f,
+            Quaternion.identity,
+            ObjectPoolManager.PoolType.ParticleSystems
+        );
+
+        
+
+        // For the enemy death particles
         ObjectPoolManager.SpawnObject(
             enemyDeathEffect,
             collision.transform.position,

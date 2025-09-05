@@ -171,6 +171,8 @@ MonoBehaviour:
   - {fileID: 3225442217125640922, guid: f360e99833c953045aa203c8ec76d203, type: 3}
   - {fileID: 2156190549637636364, guid: ef81a9abafdea5844a8b9e26ec3b3965, type: 3}
   - {fileID: 6889787418478081159, guid: 6f99edbfe137b174b84f00d6fc7979a1, type: 3}
+  xpNumber: {fileID: 6733635871390436447, guid: ddbea2b473cb61748987d2fb94bd95b1, type: 3}
+  xpNumText: {fileID: 2457730662770447209, guid: ddbea2b473cb61748987d2fb94bd95b1, type: 3}
 --- !u!96 &5736128242287681
 TrailRenderer:
   serializedVersion: 3
