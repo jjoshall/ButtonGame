@@ -9,6 +9,10 @@ public class XP : MonoBehaviour
     [SerializeField] private Slider xpBar;
     [SerializeField] private int lvlNum = 1;
     [SerializeField] private TextMeshProUGUI lvlTxt;
+    [SerializeField] private ParticleSystem lvlUpEffect;
+    [SerializeField] private Transform playerPos;
+    [SerializeField] private float camShakeDuration = 0.3f;
+    [SerializeField] private float camShakeMagnitude = 0.2f;
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -21,7 +25,6 @@ public class XP : MonoBehaviour
 
     private void Update() {
         if (xpBar.value >= 100) {
-            Debug.Log("Level up");
             lvlNum++;
             NextLevel();
         }
@@ -32,7 +35,16 @@ public class XP : MonoBehaviour
     }
 
     private void NextLevel() {
+        ObjectPoolManager.SpawnObject(
+            lvlUpEffect,
+            playerPos.transform.position,
+            Quaternion.identity,
+            ObjectPoolManager.PoolType.ParticleSystems
+        );
+
         xpBar.value = 0;
         lvlTxt.text = "LVL " + lvlNum.ToString();
+
+        CameraShake.Instance.Shake(camShakeDuration, camShakeMagnitude);
     }
 }

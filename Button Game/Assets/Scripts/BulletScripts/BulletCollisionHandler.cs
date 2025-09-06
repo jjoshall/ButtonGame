@@ -5,6 +5,8 @@ public class BulletCollisonHandler : MonoBehaviour
 {
     private float lifetime = 2f;
     private float hitStopDuration = 0.3f;
+    [SerializeField] private float camShakeDuration = 0.3f;
+    [SerializeField] private float camShakeMagnitude = 0.2f;
 
     [SerializeField] private ParticleSystem enemyDeathEffect;
     [SerializeField] private GameObject[] enemyDeathSprites;
@@ -39,6 +41,7 @@ public class BulletCollisonHandler : MonoBehaviour
         if (_rb) _rb.linearVelocity = Vector2.zero;
 
         HitStop.Instance.DoHitStop(hitStopDuration);
+        CameraShake.Instance.Shake(camShakeDuration, camShakeMagnitude);
 
         // Add a random amount of xp between 10 and 30
         int randomXP = Random.Range(10, 31);
