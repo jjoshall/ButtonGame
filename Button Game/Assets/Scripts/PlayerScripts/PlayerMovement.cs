@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private RegBullet regBullet; // Reference to the RegBullet script for firing bullets
     [SerializeField] private ParticleSystem dashEffect; // Reference to the dash effect particle system
     [SerializeField] private ShotFeedback shotFeedback; // Reference to the shot feedback script
+    [SerializeField] private AudioClip[] shootSounds; // Array of shooting sound effects
 
     [Header("Dash Settings")]
     [SerializeField] private float slideForceAmt = 50f;
@@ -57,6 +58,8 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if (context.performed) {
+            SoundEffectManager.Instance.PlayRandomSoundFXClip(shootSounds, player, 1f);
+
             MovePlayerAwayFromClick();
 
             Vector3 direction = GetDirectionOfMouseClick();

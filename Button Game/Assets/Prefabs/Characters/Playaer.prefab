@@ -661,6 +661,10 @@ MonoBehaviour:
   regBullet: {fileID: -80030245510144035}
   dashEffect: {fileID: 6224653128371713681, guid: f8fc104b200510440bb1c0e2ca721fde, type: 3}
   shotFeedback: {fileID: 3075295749106761740}
+  shootSounds:
+  - {fileID: 8300000, guid: 1bdaafb269b5e9649875f28a815f9386, type: 3}
+  - {fileID: 8300000, guid: 5e94465b50805f641acd69b8f11f9c85, type: 3}
+  - {fileID: 8300000, guid: 8522d9d432d343141b0aa5ff3e3308fd, type: 3}
   slideForceAmt: 500
   maxSpeed: 5
   dragAmt: 2
@@ -735,6 +739,11 @@ MonoBehaviour:
   healthBar: {fileID: 9044660862675967809}
   deathText: {fileID: 3284037361357137927}
   restartButton: {fileID: 4023854780531821517}
+  hurtSounds:
+  - {fileID: 8300000, guid: 2506b57efe233cf4b8dc628ba7e43b3c, type: 3}
+  - {fileID: 8300000, guid: 32713ee882084374a8b7d517db5c1957, type: 3}
+  - {fileID: 8300000, guid: bef3d1ded6fce12489792c99729becbb, type: 3}
+  deathSound: {fileID: 8300000, guid: 87a090fc3dc905a45b8df64922ea3b45, type: 3}
 --- !u!1 &8011742632936024864
 GameObject:
   m_ObjectHideFlags: 0

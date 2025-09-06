@@ -15,11 +15,12 @@ public class XP : MonoBehaviour
     [SerializeField] private float camShakeMagnitude = 0.2f;
 
     private void Awake() {
-        if (Instance != null && Instance != this) {
-            Destroy(this.gameObject);
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else {
-            Instance = this;
+            Destroy(gameObject);
         }
     }
 

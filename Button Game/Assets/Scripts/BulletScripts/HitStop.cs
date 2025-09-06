@@ -6,7 +6,13 @@ public class HitStop : MonoBehaviour
     public static HitStop Instance;
 
     private void Awake() {
-        Instance = this;
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else {
+            Destroy(gameObject);
+        }
     }
 
     public void DoHitStop(float duration) {

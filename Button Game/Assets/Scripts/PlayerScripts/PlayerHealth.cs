@@ -9,15 +9,21 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Image healthBar; // Reference to the UI health bar image
     [SerializeField] private TextMeshProUGUI deathText; // Reference to the death text UI element
     [SerializeField] private Button restartButton; // Reference to the restart button UI element
+    [SerializeField] private AudioClip[] hurtSounds; // Array of hurt sound effects
+    [SerializeField] private AudioClip deathSound; // Death sound effect
 
     public void TakeDamage(float damage) {
         if (damage <= 0)
             return;
 
+        SoundEffectManager.Instance.PlayRandomSoundFXClip(hurtSounds, transform, 1f);
+
         healthBar.fillAmount -= damage / maxHealth;
 
         if (healthBar.fillAmount <= 0f) {
             healthBar.fillAmount = 0f; // Ensure health does not go below zero
+
+            SoundEffectManager.Instance.PlaySoundFXClip(deathSound, transform, 1f);
 
             // Optionally, handle player death here
             Time.timeScale = 0f; // Pause the game
