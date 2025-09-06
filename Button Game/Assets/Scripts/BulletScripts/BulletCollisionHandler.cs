@@ -8,6 +8,8 @@ public class BulletCollisonHandler : MonoBehaviour
     [SerializeField] private float camShakeDuration = 0.3f;
     [SerializeField] private float camShakeMagnitude = 0.2f;
 
+    [SerializeField] private AudioClip[] enemyKillSounds;
+
     [SerializeField] private ParticleSystem enemyDeathEffect;
     [SerializeField] private GameObject[] enemyDeathSprites;
     [SerializeField] private GameObject xpNumber;
@@ -42,6 +44,7 @@ public class BulletCollisonHandler : MonoBehaviour
 
         HitStop.Instance.DoHitStop(hitStopDuration);
         CameraShake.Instance.Shake(camShakeDuration, camShakeMagnitude);
+        SoundEffectManager.Instance.PlayRandomSoundFXClip(enemyKillSounds, transform, 1f);
 
         // Add a random amount of xp between 10 and 30
         int randomXP = Random.Range(10, 31);

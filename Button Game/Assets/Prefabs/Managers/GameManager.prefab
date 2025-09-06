@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6662357582614160728}
   - component: {fileID: 4114092795844932020}
   - component: {fileID: 4774193702589565141}
+  - component: {fileID: 6891013153798992761}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -88,3 +89,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xpBar: {fileID: 0}
+  lvlNum: 1
+  lvlTxt: {fileID: 0}
+  lvlUpEffect: {fileID: 0}
+  playerPos: {fileID: 0}
+  camShakeDuration: 0.3
+  camShakeMagnitude: 0.2
+--- !u!114 &6891013153798992761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2301403384089867049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259218dc170023647b46445fba31f064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundFXObject: {fileID: 5060600837752359373, guid: b729e5c93c87f294cb706cf358983f32, type: 3}

@@ -168,6 +168,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camShakeDuration: 0.1
   camShakeMagnitude: 0.05
+  enemyKillSounds:
+  - {fileID: 8300000, guid: 3fbfa6700cd6ff74cb15b7253bdbb84e, type: 3}
+  - {fileID: 8300000, guid: 198a931d7ee680b459b152ee8fa92317, type: 3}
+  - {fileID: 8300000, guid: 7c25f1e132a0111488ba5a20a1f4f45a, type: 3}
   enemyDeathEffect: {fileID: 6224653128371713681, guid: 28c69757b53d50346bf44b2e01e88f88, type: 3}
   enemyDeathSprites:
   - {fileID: 3225442217125640922, guid: f360e99833c953045aa203c8ec76d203, type: 3}
