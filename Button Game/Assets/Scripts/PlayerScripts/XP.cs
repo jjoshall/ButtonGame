@@ -13,14 +13,20 @@ public class XP : MonoBehaviour
     [SerializeField] private Transform playerPos;
     [SerializeField] private float camShakeDuration = 0.3f;
     [SerializeField] private float camShakeMagnitude = 0.2f;
+    [SerializeField] private AudioClip lvlUpSound;
 
     private void Awake() {
-        if (Instance == null) {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else {
+        if (Instance != null && Instance != this) {
             Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
+
+    private void OnDestroy() {
+        if (Instance == this) {
+            Instance = null;
         }
     }
 
@@ -36,6 +42,8 @@ public class XP : MonoBehaviour
     }
 
     private void NextLevel() {
+        SoundEffectManager.Instance.PlaySoundFXClip(lvlUpSound, playerPos, 1f);
+
         ObjectPoolManager.SpawnObject(
             lvlUpEffect,
             playerPos.transform.position,

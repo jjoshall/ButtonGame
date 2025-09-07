@@ -7,13 +7,15 @@ public class SoundEffectManager : MonoBehaviour
     [SerializeField] private AudioSource soundFXObject;
 
     private void Awake() {
-        if (Instance == null) {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else {
+        if (Instance != null && Instance != this) {
             Destroy(gameObject);
+            return;
         }
+        Instance = this; // no DontDestroyOnLoad
+    }
+
+    private void OnDestroy() {
+        if (Instance == this) Instance = null;
     }
 
     public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume) {
