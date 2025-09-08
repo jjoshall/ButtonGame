@@ -949,7 +949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1092077383
 RectTransform:
   m_ObjectHideFlags: 0
@@ -982,13 +982,14 @@ GameObject:
   - component: {fileID: 1201270952}
   - component: {fileID: 1201270954}
   - component: {fileID: 1201270953}
+  - component: {fileID: 1201270955}
   m_Layer: 5
   m_Name: UpgradeBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1201270952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1051,6 +1052,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201270951}
   m_CullTransparentMesh: 1
+--- !u!114 &1201270955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201270951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4133e14eb4298440ac14a35028e2593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgrades:
+  - {fileID: 1092077382}
+  - {fileID: 2097656835}
+  leftSlot: {fileID: 365234242}
+  rightSlot: {fileID: 566963369}
 --- !u!1 &1330665631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,7 +1685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2097656836
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1888,6 +1906,10 @@ PrefabInstance:
       propertyPath: lvlUpSound
       value: 
       objectReference: {fileID: 8300000, guid: 65468584206889342a0fee42809e7aac, type: 3}
+    - target: {fileID: 4774193702589565141, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
+      propertyPath: upgradeScreen
+      value: 
+      objectReference: {fileID: 1201270951}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
