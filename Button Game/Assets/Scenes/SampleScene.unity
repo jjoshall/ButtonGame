@@ -211,7 +211,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +10 Max Health
+  m_text: +20% Max Health
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -855,7 +855,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +5 Damage
+  m_text: +10% Damage
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -983,6 +983,7 @@ GameObject:
   - component: {fileID: 1201270954}
   - component: {fileID: 1201270953}
   - component: {fileID: 1201270955}
+  - component: {fileID: 1201270956}
   m_Layer: 5
   m_Name: UpgradeBackground
   m_TagString: Untagged
@@ -1069,6 +1070,20 @@ MonoBehaviour:
   - {fileID: 2097656835}
   leftSlot: {fileID: 365234242}
   rightSlot: {fileID: 566963369}
+--- !u!114 &1201270956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201270951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce41a66403e88234c90b6ffd988d5c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 1247114064487967807}
+  upgradeScreen: {fileID: 1201270951}
 --- !u!1 &1330665631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,7 +1257,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1456869835}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1201270956}
+        m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+        m_MethodName: HealthUpgradeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1201270956}
+        m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+        m_MethodName: ReturnToGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1456869835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1838,6 +1877,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2614855445429720732, guid: 63ba28420d1823a4889ae9b99831eee3, type: 3}
   m_PrefabInstance: {fileID: 1247114064487967805}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1247114064487967807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2791556459439044984, guid: 63ba28420d1823a4889ae9b99831eee3, type: 3}
+  m_PrefabInstance: {fileID: 1247114064487967805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21339aeee963b164aa2c08c12587196f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2346932656830419986
 PrefabInstance:
   m_ObjectHideFlags: 0

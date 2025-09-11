@@ -33,4 +33,14 @@ public class UpgradeScreen : MonoBehaviour
         leftUpgrade.SetActive(true);
         rightUpgrade.SetActive(true);
     }
+
+    private void OnDisable() {
+        Time.timeScale = 1f;
+
+        if (leftUpgrade != null) leftUpgrade.SetActive(false);
+        if (rightUpgrade != null) rightUpgrade.SetActive(false);
+
+        leftUpgrade = null;
+        rightUpgrade = null;
+    }
 }
