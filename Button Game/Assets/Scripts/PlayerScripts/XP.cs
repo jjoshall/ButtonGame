@@ -15,6 +15,11 @@ public class XP : MonoBehaviour
     [SerializeField] private float camShakeMagnitude = 0.2f;
     [SerializeField] private AudioClip lvlUpSound;
 
+    [SerializeField] private int baseXPRequired = 100;
+    [SerializeField] private float xpGrowthRate = 1.15f;
+    private int currentXP = 0;
+    private int xpRequired;
+
     private void Awake() {
         if (Instance != null && Instance != this) {
             Destroy(gameObject);
@@ -30,18 +35,35 @@ public class XP : MonoBehaviour
         }
     }
 
-    private void Update() {
-        if (xpBar.value >= 100) {
-            lvlNum++;
+    private void Start() {
+        xpRequired = baseXPRequired;
+        xpBar.maxValue = xpRequired;
+        xpBar.value = 0;
+        lvlTxt.text = "LVL " + lvlNum.ToString();
+    }
+
+    public void AddXP(int amount) {
+        currentXP += amount;
+        xpBar.value = currentXP;
+
+        if (currentXP >= xpRequired) {
             NextLevel();
         }
     }
 
-    public void AddXP(int amount) {
-        xpBar.value += amount;
-    }
-
     private void NextLevel() {
+        lvlNum++;
+
+        // Carry over excess XP to the next level
+        currentXP -= xpRequired;
+
+        // Scale the XP required for the next level
+        xpRequired = Mathf.RoundToInt(xpRequired * xpGrowthRate);
+
+        xpBar.maxValue = xpRequired;
+        xpBar.value = currentXP;
+        lvlTxt.text = "LVL " + lvlNum.ToString();
+
         SoundEffectManager.Instance.PlaySoundFXClip(lvlUpSound, playerPos, 1f);
 
         ObjectPoolManager.SpawnObject(
@@ -50,9 +72,6 @@ public class XP : MonoBehaviour
             Quaternion.identity,
             ObjectPoolManager.PoolType.ParticleSystems
         );
-
-        xpBar.value = 0;
-        lvlTxt.text = "LVL " + lvlNum.ToString();
 
         CameraShake.Instance.Shake(camShakeDuration, camShakeMagnitude);
     }
