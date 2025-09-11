@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
     [Header("References")]
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private ParticleSystem dashEffect; // Reference to the dash effect particle system
     [SerializeField] private ShotFeedback shotFeedback; // Reference to the shot feedback script
     [SerializeField] private AudioClip[] shootSounds; // Array of shooting sound effects
+    [SerializeField] private Image[] uiBullets;
 
     [Header("Dash Settings")]
     [SerializeField] private float slideForceAmt = 50f;
@@ -31,6 +33,10 @@ public class PlayerMovement : MonoBehaviour {
         Instance = gameObject;
 
         currentBulletAmount = bulletAmountMax;
+
+        foreach (var img in uiBullets) {
+            img.fillAmount = 1f;
+        }
     }
 
     private void FixedUpdate() {
@@ -75,6 +81,7 @@ public class PlayerMovement : MonoBehaviour {
                 return;
             }
 
+            UseBullet();
             currentBulletAmount--;
             Debug.Log("Bullets left: " + currentBulletAmount.ToString());
             ReloadBullets();
@@ -139,11 +146,30 @@ public class PlayerMovement : MonoBehaviour {
         isReloading = true;
 
         while (currentBulletAmount < bulletAmountMax) {
-            yield return new WaitForSeconds(reloadTime);
-            currentBulletAmount = Mathf.Min(currentBulletAmount + 1, bulletAmountMax);
+            int index = currentBulletAmount;
+            float elapsed = 0f;
+
+            while (elapsed < reloadTime) {
+                elapsed += Time.deltaTime;
+                uiBullets[index].fillAmount = Mathf.Clamp01(elapsed / reloadTime);
+                yield return null;
+            }
+
+            uiBullets[index].fillAmount = 1f;
+            currentBulletAmount++;
+
+            // Play reload sound effect
+
             Debug.Log("Reloaded 1 bullet. Current bullets: " + currentBulletAmount);
         }
 
         isReloading = false;
+    }
+
+    private void UseBullet() {
+        if (currentBulletAmount > 0) {
+            int index = currentBulletAmount - 1;
+            uiBullets[index].fillAmount = 0f;
+        }
     }
 }
