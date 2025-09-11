@@ -14,7 +14,6 @@ public class XP : MonoBehaviour
     [SerializeField] private float camShakeDuration = 0.3f;
     [SerializeField] private float camShakeMagnitude = 0.2f;
     [SerializeField] private AudioClip lvlUpSound;
-    [SerializeField] private GameObject upgradeScreen;
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -56,7 +55,5 @@ public class XP : MonoBehaviour
         lvlTxt.text = "LVL " + lvlNum.ToString();
 
         CameraShake.Instance.Shake(camShakeDuration, camShakeMagnitude);
-
-        upgradeScreen.SetActive(true);
     }
 }
