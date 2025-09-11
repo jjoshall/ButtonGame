@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,10 +19,18 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float dragAmt = 5f;
 
+    [Header("Gun Settings")]
+    [SerializeField] private int bulletAmountMax = 3;
+    [SerializeField] private float reloadTime = 1f;
+    private int currentBulletAmount;
+    private bool isReloading = false;
+
     public static GameObject Instance;
 
     private void Awake() {
         Instance = gameObject;
+
+        currentBulletAmount = bulletAmountMax;
     }
 
     private void FixedUpdate() {
@@ -58,6 +67,18 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if (context.performed) {
+            if (currentBulletAmount <= 0) {
+                Debug.Log("Out of bullets!");
+
+                // play empty clip sound
+
+                return;
+            }
+
+            currentBulletAmount--;
+            Debug.Log("Bullets left: " + currentBulletAmount.ToString());
+            ReloadBullets();
+
             SoundEffectManager.Instance.PlayRandomSoundFXClip(shootSounds, player, 1f);
 
             MovePlayerAwayFromClick();
@@ -101,5 +122,28 @@ public class PlayerMovement : MonoBehaviour {
         Quaternion rot = Quaternion.Euler(0, 0, angle);
 
         ObjectPoolManager.SpawnObject(dashEffect, spawnPos, rot, ObjectPoolManager.PoolType.ParticleSystems);
+    }
+
+    private void ReloadBullets() {
+        if (!isReloading) {
+            StartCoroutine(ReloadCoroutine());
+        }
+
+        //if (currentBulletAmount < bulletAmountMax) {
+        //    Debug.Log("Starting reload coroutine");
+        //    StartCoroutine(ReloadCoroutine());
+        //}
+    }
+
+    private IEnumerator ReloadCoroutine() {
+        isReloading = true;
+
+        while (currentBulletAmount < bulletAmountMax) {
+            yield return new WaitForSeconds(reloadTime);
+            currentBulletAmount = Mathf.Min(currentBulletAmount + 1, bulletAmountMax);
+            Debug.Log("Reloaded 1 bullet. Current bullets: " + currentBulletAmount);
+        }
+
+        isReloading = false;
     }
 }
