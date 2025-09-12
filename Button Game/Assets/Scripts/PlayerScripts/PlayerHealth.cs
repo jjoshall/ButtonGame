@@ -54,10 +54,12 @@ public class PlayerHealth : MonoBehaviour
         if (amount <= 0)
             return;
 
-        currentHealth += amount / maxHealth;
+        currentHealth += amount;
         if (currentHealth > maxHealth) {
             currentHealth = maxHealth; // Ensure health does not exceed maximum
         }
+
+        UpdateHealthUI();
     }
 
     private void UpdateHealthUI() {
@@ -70,11 +72,7 @@ public class PlayerHealth : MonoBehaviour
         maxHealth += upgradeAmount;
         currentHealth += upgradeAmount;
         UpdateHealthUI();
-    }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.L)) {
-            Debug.Log("Max Health: " + maxHealth.ToString() + " Current Health: " + currentHealth.ToString());
-        }
+        Debug.Log("Upgraded Max Health by " + upgradeAmount + ". New Max Health: " + maxHealth);
     }
 }

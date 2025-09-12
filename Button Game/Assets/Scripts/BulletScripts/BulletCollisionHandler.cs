@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -5,6 +6,13 @@ public class BulletCollisonHandler : MonoBehaviour
 {
     private float lifetime = 2f;
     private float hitStopDuration = 0.3f;
+
+    // Penetrate upgrade
+    [SerializeField] private int remainingPenetration;
+
+    // Size Upgrade
+    [SerializeField] private Vector3 currentSize;
+
     [SerializeField] private float camShakeDuration = 0.3f;
     [SerializeField] private float camShakeMagnitude = 0.2f;
 
@@ -29,6 +37,10 @@ public class BulletCollisonHandler : MonoBehaviour
         if (_collider) _collider.enabled = true;
         CancelInvoke();
         Invoke(nameof(ReturnToPool), lifetime);
+
+        remainingPenetration = UpgradeManager.BulletPenetration;
+        currentSize = UpgradeManager.BulletSize;
+        transform.localScale = currentSize;
     }
 
     private void OnDisable() {
@@ -39,9 +51,6 @@ public class BulletCollisonHandler : MonoBehaviour
         if (_hasProcessedHit || !collision.CompareTag("Enemy")) return;
         _hasProcessedHit = true;
 
-        if (_collider) _collider.enabled = false;
-        if (_rb) _rb.linearVelocity = Vector2.zero;
-
         HitStop.Instance.DoHitStop(hitStopDuration);
         CameraShake.Instance.Shake(camShakeDuration, camShakeMagnitude);
         SoundEffectManager.Instance.PlayRandomSoundFXClip(enemyKillSounds, transform, 1f);
@@ -49,15 +58,19 @@ public class BulletCollisonHandler : MonoBehaviour
         // Add a random amount of xp between 10 and 30
         int randomXP = Random.Range(10, 31);
         XP.Instance.AddXP(randomXP);
-        xpNumText.text = "+" + randomXP.ToString();
 
         // For XP number popup
-        ObjectPoolManager.SpawnObject(
+        var xpObj = ObjectPoolManager.SpawnObject(
             xpNumber,
             collision.transform.position + Vector3.up * 0.5f,
             Quaternion.identity,
             ObjectPoolManager.PoolType.ParticleSystems
         );
+
+        var xpText = xpObj.GetComponent<XPFadeaway>();
+        if (xpText != null) {
+            xpText.SetValue(randomXP);
+        }
 
         // For the enemy death particles
         ObjectPoolManager.SpawnObject(
@@ -78,7 +91,21 @@ public class BulletCollisonHandler : MonoBehaviour
         }
 
         ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
-        ReturnToPool();
+
+        if (remainingPenetration > 0) {
+            remainingPenetration--;
+            StartCoroutine(ResetProcessedFlagNextFrame());
+        }
+        else {
+            if (_collider) _collider.enabled = false;
+            if (_rb) _rb.linearVelocity = Vector2.zero;
+            ReturnToPool();
+        }
+    }
+
+    private IEnumerator ResetProcessedFlagNextFrame() {
+        yield return null; // Wait for the next frame
+        _hasProcessedHit = false;
     }
 
     private void ReturnToPool() {

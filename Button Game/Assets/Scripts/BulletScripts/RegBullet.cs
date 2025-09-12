@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RegBullet : MonoBehaviour
 {
-    [SerializeField] private float bulletForce = 10f;
+    [SerializeField] private float bulletForce = 5f;
     [SerializeField] private float bulletLifetime = 2f;
     [SerializeField] private float hitStopDuration = 0.05f;    
 
@@ -29,5 +29,11 @@ public class RegBullet : MonoBehaviour
         else {
             Debug.LogError("Instantiated bullet has no BulletCollisonHandler component.");
         }
+    }
+
+    public void UpgradeBulletForce(float multiplier) {
+        bulletForce *= multiplier;
+
+        Debug.Log("Bullet force upgraded. New force: " + bulletForce);
     }
 }

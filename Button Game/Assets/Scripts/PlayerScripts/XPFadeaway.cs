@@ -26,6 +26,14 @@ public class XPFadeaway : MonoBehaviour
         _text.color = c;
     }
 
+    public void SetValue(int value) {
+        if (_text == null) {
+            Debug.LogError("Text is not assigned in the XPFadeaway script.");
+            return;
+        }
+        _text.text = $"+{value}";
+    }
+
     private void OnDisable() {
         CancelInvoke();
     }

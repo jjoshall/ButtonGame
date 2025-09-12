@@ -14,29 +14,16 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private ParticleSystem dashEffect; // Reference to the dash effect particle system
     [SerializeField] private ShotFeedback shotFeedback; // Reference to the shot feedback script
     [SerializeField] private AudioClip[] shootSounds; // Array of shooting sound effects
-    [SerializeField] private Image[] uiBullets;
 
     [Header("Dash Settings")]
     [SerializeField] private float slideForceAmt = 50f;
     [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float dragAmt = 5f;
 
-    [Header("Gun Settings")]
-    [SerializeField] private int bulletAmountMax = 3;
-    [SerializeField] private float reloadTime = 1f;
-    private int currentBulletAmount;
-    private bool isReloading = false;
-
     public static GameObject Instance;
 
     private void Awake() {
         Instance = gameObject;
-
-        currentBulletAmount = bulletAmountMax;
-
-        foreach (var img in uiBullets) {
-            img.fillAmount = 1f;
-        }
     }
 
     private void FixedUpdate() {
@@ -73,19 +60,6 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if (context.performed) {
-            if (currentBulletAmount <= 0) {
-                Debug.Log("Out of bullets!");
-
-                // play empty clip sound
-
-                return;
-            }
-
-            UseBullet();
-            currentBulletAmount--;
-            Debug.Log("Bullets left: " + currentBulletAmount.ToString());
-            ReloadBullets();
-
             SoundEffectManager.Instance.PlayRandomSoundFXClip(shootSounds, player, 1f);
 
             MovePlayerAwayFromClick();
@@ -131,45 +105,10 @@ public class PlayerMovement : MonoBehaviour {
         ObjectPoolManager.SpawnObject(dashEffect, spawnPos, rot, ObjectPoolManager.PoolType.ParticleSystems);
     }
 
-    private void ReloadBullets() {
-        if (!isReloading) {
-            StartCoroutine(ReloadCoroutine());
-        }
+    public void UpgradeSlide(float multiplier) {
+        slideForceAmt *= multiplier;
+        dragAmt *= 1f / multiplier;     // mult = 1.2 means 20% longer slides
 
-        //if (currentBulletAmount < bulletAmountMax) {
-        //    Debug.Log("Starting reload coroutine");
-        //    StartCoroutine(ReloadCoroutine());
-        //}
-    }
-
-    private IEnumerator ReloadCoroutine() {
-        isReloading = true;
-
-        while (currentBulletAmount < bulletAmountMax) {
-            int index = currentBulletAmount;
-            float elapsed = 0f;
-
-            while (elapsed < reloadTime) {
-                elapsed += Time.deltaTime;
-                uiBullets[index].fillAmount = Mathf.Clamp01(elapsed / reloadTime);
-                yield return null;
-            }
-
-            uiBullets[index].fillAmount = 1f;
-            currentBulletAmount++;
-
-            // Play reload sound effect
-
-            Debug.Log("Reloaded 1 bullet. Current bullets: " + currentBulletAmount);
-        }
-
-        isReloading = false;
-    }
-
-    private void UseBullet() {
-        if (currentBulletAmount > 0) {
-            int index = currentBulletAmount - 1;
-            uiBullets[index].fillAmount = 0f;
-        }
+        Debug.Log("Upgraded slide: " + slideForceAmt + ", drag: " + dragAmt);
     }
 }

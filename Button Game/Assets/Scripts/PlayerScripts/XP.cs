@@ -74,5 +74,7 @@ public class XP : MonoBehaviour
         );
 
         CameraShake.Instance.Shake(camShakeDuration, camShakeMagnitude);
+
+        UpgradeManager.Instance.GrantUpgrade(lvlNum, playerPos.gameObject);
     }
 }
