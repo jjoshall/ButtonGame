@@ -10,6 +10,7 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private RegBullet regBullet;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private BulletCollisonHandler bulletHandler;
+    [SerializeField] private EnemyDrops enemyDrops;
 
     public static int BulletPenetration = 0;
     public static Vector3 BulletSize = new Vector3(0.15f, 0.25f, 0.35f);
@@ -39,11 +40,12 @@ public class UpgradeManager : MonoBehaviour
             upgrades.Add(() => playerHealth.UpgradeMaxHealth(25));
             upgrades.Add(() => regBullet.UpgradeBulletForce(1.3f));
             upgrades.Add(() => playerMovement.UpgradeSlide(1.5f));
+
         }
         else if (tier == 2) {
             upgrades.Add(() => UpgradeManager.BulletPenetration++);
             upgrades.Add(() => UpgradeManager.BulletSize += new Vector3(0.1f, 0.1f, 0.1f));
-            //upgrades.Add(() =>
+            upgrades.Add(() => enemyDrops.EnableHealthPackDrop());
         }
         //else if (tier == 3) {
         //    upgrades.Add(() => 

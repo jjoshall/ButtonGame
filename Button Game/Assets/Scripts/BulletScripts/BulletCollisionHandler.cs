@@ -27,6 +27,8 @@ public class BulletCollisonHandler : MonoBehaviour
     private Rigidbody2D _rb;
     private bool _hasProcessedHit;
 
+    [SerializeField] private EnemyDrops enemyDrops;
+
     private void Awake() {
         _collider = GetComponent<Collider2D>();
         _rb = GetComponent<Rigidbody2D>();
@@ -89,6 +91,8 @@ public class BulletCollisonHandler : MonoBehaviour
                 ObjectPoolManager.PoolType.ParticleSystems
             );
         }
+
+        enemyDrops.DropHealthPackAt(collision.transform.position);
 
         ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2811311073365917859}
   - component: {fileID: 4569417929575487346}
   - component: {fileID: 1212652090202420292}
+  - component: {fileID: 8267188321828578027}
   m_Layer: 0
   m_Name: Bad Guy
   m_TagString: Enemy
@@ -148,3 +149,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.14, y: 1.06}
   m_EdgeRadius: 0
+--- !u!114 &8267188321828578027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024593858654122013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0da8fbba7402f448a8a7e33f6623f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPackPrefab: {fileID: 3508396298376730919, guid: a4cb72b802ddc18428a769c1021b7cc3, type: 3}
+  canDropHealthPack: 1

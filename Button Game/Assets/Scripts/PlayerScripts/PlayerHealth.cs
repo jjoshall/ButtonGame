@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip[] hurtSounds; // Array of hurt sound effects
     [SerializeField] private AudioClip deathSound; // Death sound effect
 
+    [SerializeField] private GameObject healthPackPrefab; // Reference to the health pack prefab
+
     private void Start() {
         currentHealth = maxHealth;
         UpdateHealthUI();
@@ -47,6 +49,13 @@ public class PlayerHealth : MonoBehaviour
                 Time.timeScale = 1f; // Resume the game
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Restart the current scene
             });
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("HealthPack")) {
+            Heal(15f); // Heal the player by 25 health points
+            ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
         }
     }
 
