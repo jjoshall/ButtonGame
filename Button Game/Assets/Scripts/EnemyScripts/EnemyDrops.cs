@@ -3,7 +3,11 @@ using UnityEngine;
 public class EnemyDrops : MonoBehaviour
 {
     [SerializeField] private GameObject healthPackPrefab;
-    public bool canDropHealthPack = false;
+    [SerializeField] private bool canDropHealthPack = false;
+
+    private void Awake() {
+        canDropHealthPack = false;
+    }
 
     public void EnableHealthPackDrop() {
         canDropHealthPack = true;

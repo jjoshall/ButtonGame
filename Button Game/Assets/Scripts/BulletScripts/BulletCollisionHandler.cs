@@ -6,6 +6,7 @@ public class BulletCollisonHandler : MonoBehaviour
 {
     private float lifetime = 2f;
     private float hitStopDuration = 0.3f;
+    private int randomXP;
 
     // Penetrate upgrade
     [SerializeField] private int remainingPenetration;
@@ -29,9 +30,13 @@ public class BulletCollisonHandler : MonoBehaviour
 
     [SerializeField] private EnemyDrops enemyDrops;
 
+    [SerializeField] private bool CritXP = false;
+
     private void Awake() {
         _collider = GetComponent<Collider2D>();
         _rb = GetComponent<Rigidbody2D>();
+
+        CritXP = false;
     }
 
     private void OnEnable() {
@@ -57,9 +62,23 @@ public class BulletCollisonHandler : MonoBehaviour
         CameraShake.Instance.Shake(camShakeDuration, camShakeMagnitude);
         SoundEffectManager.Instance.PlayRandomSoundFXClip(enemyKillSounds, transform, 1f);
 
-        // Add a random amount of xp between 10 and 30
-        int randomXP = Random.Range(10, 31);
-        XP.Instance.AddXP(randomXP);
+        if (CritXP) {
+            // Have a 10% chance to get a large amount of XP on kill
+            int critChance = Random.Range(1, 11); // 1 to 10
+
+            if (critChance == 1) {
+                randomXP = Random.Range(70, 101); // Between 50 and 100 XP
+                XP.Instance.AddXP(randomXP);
+            }
+            else {
+                randomXP = Random.Range(10, 31);
+                XP.Instance.AddXP(randomXP);
+            }
+        }
+        else {
+            randomXP = Random.Range(10, 31);
+            XP.Instance.AddXP(randomXP);
+        }
 
         // For XP number popup
         var xpObj = ObjectPoolManager.SpawnObject(
@@ -122,5 +141,10 @@ public class BulletCollisonHandler : MonoBehaviour
 
     public void SetHitStopDuration(float duration) {
         hitStopDuration = duration;
+    }
+
+    public void EnableCritXPUpgrade() {
+        CritXP = true;
+        Debug.Log("CritXP on");
     }
 }

@@ -162,4 +162,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPackPrefab: {fileID: 3508396298376730919, guid: a4cb72b802ddc18428a769c1021b7cc3, type: 3}
-  canDropHealthPack: 1
+  canDropHealthPack: 0

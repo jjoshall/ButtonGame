@@ -81,7 +81,5 @@ public class PlayerHealth : MonoBehaviour
         maxHealth += upgradeAmount;
         currentHealth += upgradeAmount;
         UpdateHealthUI();
-
-        Debug.Log("Upgraded Max Health by " + upgradeAmount + ". New Max Health: " + maxHealth);
     }
 }

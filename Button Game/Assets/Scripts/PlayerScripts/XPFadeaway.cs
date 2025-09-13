@@ -5,6 +5,7 @@ public class XPFadeaway : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
     [SerializeField] private float flashSpeed = 5f;
+    [SerializeField] private Color normalColor;
 
     private void OnEnable() {
         if (_text == null) {
@@ -31,6 +32,15 @@ public class XPFadeaway : MonoBehaviour
             Debug.LogError("Text is not assigned in the XPFadeaway script.");
             return;
         }
+
+        if (value >= 70) {
+            // Change text color to red for high XP gain
+            _text.color = Color.red;
+        }
+        else {
+            _text.color = normalColor;
+        }
+
         _text.text = $"+{value}";
     }
 
