@@ -5,6 +5,8 @@ public class HitStop : MonoBehaviour
 {
     public static HitStop Instance;
 
+    private Coroutine currentCoroutine;
+
     private void Awake() {
         if (Instance != null && Instance != this) {
             Destroy(gameObject);
@@ -18,13 +20,18 @@ public class HitStop : MonoBehaviour
     }
 
     public void DoHitStop(float duration) {
-        StartCoroutine(HitStopCoroutine(duration));
+        if (currentCoroutine != null) {
+            StopCoroutine(currentCoroutine);
+            Time.timeScale = 1f; // Ensure time is reset before starting a new hit stop
+        }
+
+        currentCoroutine = StartCoroutine(HitStopCoroutine(duration));
     }
 
     private IEnumerator HitStopCoroutine(float duration) {
-        float originalTimeScale = Time.timeScale;
         Time.timeScale = 0f; // Stop time
         yield return new WaitForSecondsRealtime(duration); // Wait for the specified duration
-        Time.timeScale = originalTimeScale; // Resume time
+        Time.timeScale = 1f; // Resume time
+        currentCoroutine = null;
     }
 }

@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.227, y: -0.533, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.25, z: 0.35}
+  m_LocalScale: {x: 0.1, y: 0.15, z: 0.22}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   remainingPenetration: 0
-  currentSize: {x: 0, y: 0, z: 0}
+  currentSize: {x: 0.1, y: 0.15, z: 0.22}
   camShakeDuration: 0.1
   camShakeMagnitude: 0.05
   enemyKillSounds:
@@ -182,7 +182,7 @@ MonoBehaviour:
   xpNumber: {fileID: 6733635871390436447, guid: ddbea2b473cb61748987d2fb94bd95b1, type: 3}
   xpNumText: {fileID: 2457730662770447209, guid: ddbea2b473cb61748987d2fb94bd95b1, type: 3}
   enemyDrops: {fileID: 8267188321828578027, guid: 1a9246d210c9bd14ebcbfa202a9e0304, type: 3}
-  CritXP: 0
+  CritXP: 1
 --- !u!96 &5736128242287681
 TrailRenderer:
   serializedVersion: 3

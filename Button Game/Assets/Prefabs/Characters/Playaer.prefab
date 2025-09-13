@@ -469,7 +469,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.14029, y: -2.79, z: 0}
-  m_LocalScale: {x: 0.62877, y: 0.62877, z: 0.62877}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1487257014494471527}
@@ -696,7 +696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2614855445429720732}
-  originalScale: {x: 0.62877, y: 0.62877, z: 0.62877}
+  originalScale: {x: 0.4, y: 0.4, z: 0.4}
   recoilScale: 1.4
   recoilDuration: 0.1
   recoilCurve:
@@ -744,6 +744,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 32713ee882084374a8b7d517db5c1957, type: 3}
   - {fileID: 8300000, guid: bef3d1ded6fce12489792c99729becbb, type: 3}
   deathSound: {fileID: 8300000, guid: 87a090fc3dc905a45b8df64922ea3b45, type: 3}
+  healthPackPrefab: {fileID: 0}
 --- !u!1 &8011742632936024864
 GameObject:
   m_ObjectHideFlags: 0

@@ -794,6 +794,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3075295749106761740, guid: 63ba28420d1823a4889ae9b99831eee3, type: 3}
+      propertyPath: originalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075295749106761740, guid: 63ba28420d1823a4889ae9b99831eee3, type: 3}
+      propertyPath: originalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075295749106761740, guid: 63ba28420d1823a4889ae9b99831eee3, type: 3}
+      propertyPath: originalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6022288749923332549, guid: 63ba28420d1823a4889ae9b99831eee3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -814,6 +826,10 @@ PrefabInstance:
       propertyPath: dragAmt
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6583683555381590650, guid: 63ba28420d1823a4889ae9b99831eee3, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 9100421380994185438, guid: 0c8232dc723b0d74baf01c823a361672, type: 3}
     - target: {fileID: 6583683555381590650, guid: 63ba28420d1823a4889ae9b99831eee3, type: 3}
       propertyPath: slideForceAmt
       value: 1000
@@ -982,6 +998,10 @@ PrefabInstance:
       propertyPath: lvlUpSound
       value: 
       objectReference: {fileID: 8300000, guid: 65468584206889342a0fee42809e7aac, type: 3}
+    - target: {fileID: 4774193702589565141, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
+      propertyPath: xpGrowthRate
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4774193702589565141, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
       propertyPath: upgradeScreen
       value: 

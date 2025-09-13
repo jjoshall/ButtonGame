@@ -14,8 +14,6 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip[] hurtSounds; // Array of hurt sound effects
     [SerializeField] private AudioClip deathSound; // Death sound effect
 
-    [SerializeField] private GameObject healthPackPrefab; // Reference to the health pack prefab
-
     private void Start() {
         currentHealth = maxHealth;
         UpdateHealthUI();

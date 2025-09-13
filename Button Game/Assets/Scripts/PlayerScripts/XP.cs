@@ -16,7 +16,7 @@ public class XP : MonoBehaviour
     [SerializeField] private AudioClip lvlUpSound;
 
     [SerializeField] private int baseXPRequired = 100;
-    [SerializeField] private float xpGrowthRate = 1.15f;
+    [SerializeField] private float xpGrowthRate = 1.10f;
     private int currentXP = 0;
     private int xpRequired;
 
@@ -76,5 +76,9 @@ public class XP : MonoBehaviour
         CameraShake.Instance.Shake(camShakeDuration, camShakeMagnitude);
 
         UpgradeManager.Instance.GrantUpgrade(lvlNum, playerPos.gameObject);
+    }
+
+    public int GetLevel() {
+        return lvlNum;
     }
 }
