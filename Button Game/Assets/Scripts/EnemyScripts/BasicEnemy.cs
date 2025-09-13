@@ -7,6 +7,8 @@ public class BasicEnemy : MonoBehaviour
     private GameObject target;
     [SerializeField] private float moveSpeed = 2f;
 
+    [SerializeField] private float damage = 10f;
+
     private void Start() {
         target = PlayerMovement.Instance;
     }
@@ -25,7 +27,7 @@ public class BasicEnemy : MonoBehaviour
         if (collision.CompareTag("Player")) {
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
             if (playerHealth != null) {
-                playerHealth.TakeDamage(10f); // Adjust damage as needed
+                playerHealth.TakeDamage(damage); // Adjust damage as needed
 
                 ObjectPoolManager.ReturnObjectToPool(gameObject); // Return enemy to pool after hitting player
             }

@@ -16,7 +16,7 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private EnemyDrops enemyDrops;
 
     public static int BulletPenetration = 0;
-    public static Vector3 BulletSize = new Vector3(0.15f, 0.25f, 0.35f);
+    public static Vector3 BulletSize = new Vector3(0.1f, 0.15f, 0.22f);
 
     private bool hasCritXPUpgrade = false;
     private bool hasHealthPackDropUpgrade = false;
@@ -30,6 +30,9 @@ public class UpgradeManager : MonoBehaviour
 
         hasCritXPUpgrade = false;
         hasHealthPackDropUpgrade = false;
+
+        BulletSize = new Vector3(0.1f, 0.15f, 0.22f);
+        BulletPenetration = 0;
     }
 
     public void GrantUpgrade(int level, GameObject player) {

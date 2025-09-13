@@ -730,6 +730,10 @@ PrefabInstance:
       propertyPath: bulletForce
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -80030245510144035, guid: 63ba28420d1823a4889ae9b99831eee3, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 9100421380994185438, guid: 0c8232dc723b0d74baf01c823a361672, type: 3}
     - target: {fileID: 1205190695996776605, guid: 63ba28420d1823a4889ae9b99831eee3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -982,6 +986,10 @@ PrefabInstance:
       propertyPath: spawnTimer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4114092795844932020, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 2024593858654122013, guid: 051acd51be09dc54294b478d8cd94b50, type: 3}
     - target: {fileID: 4774193702589565141, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
       propertyPath: xpBar
       value: 
@@ -1000,7 +1008,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 65468584206889342a0fee42809e7aac, type: 3}
     - target: {fileID: 4774193702589565141, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
       propertyPath: xpGrowthRate
-      value: 1.1
+      value: 1.15
       objectReference: {fileID: 0}
     - target: {fileID: 4774193702589565141, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
       propertyPath: upgradeScreen

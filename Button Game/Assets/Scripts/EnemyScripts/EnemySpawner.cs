@@ -15,13 +15,14 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int maxEnemiesPerSpawn = 5;
 
     [SerializeField] private GameObject enemyToSpawn;
+    [SerializeField] private GameObject[] enemiesToSpawn;
 
     private void Update() {
         timer += Time.deltaTime;
 
         if (timer >= spawnTimer) {
-            //SpawnBasicEnemy();
-            SpawnEnemyBatch();
+            SpawnBasicEnemy();
+            //SpawnEnemyBatch();
             timer = 0f;
         }
     }

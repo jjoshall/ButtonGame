@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private Rigidbody2D playerRb; // Reference to the player's Rigidbody2D component
     [SerializeField] private Transform gun;
     [SerializeField] private Transform gunPivot;
-    [SerializeField] private GameObject bulletPrefab; // Reference to the bullet prefab
     [SerializeField] private RegBullet regBullet; // Reference to the RegBullet script for firing bullets
     [SerializeField] private ParticleSystem dashEffect; // Reference to the dash effect particle system
     [SerializeField] private ShotFeedback shotFeedback; // Reference to the shot feedback script
@@ -54,10 +53,6 @@ public class PlayerMovement : MonoBehaviour {
             Debug.LogError("Gun transform is not assigned.");
             return;
         }
-        if (bulletPrefab == null) {
-            Debug.LogError("Bullet prefab is not assigned.");
-            return;
-        }
 
         if (context.performed) {
             SoundEffectManager.Instance.PlayRandomSoundFXClip(shootSounds, player, 1f);
@@ -65,7 +60,7 @@ public class PlayerMovement : MonoBehaviour {
             MovePlayerAwayFromClick();
 
             Vector3 direction = GetDirectionOfMouseClick();
-            regBullet.FireBullet(bulletPrefab, gun.position, direction);
+            regBullet.FireBullet(gun.position, direction);
 
             PlayDashEffect(direction);
             shotFeedback.PlayRecoil();
