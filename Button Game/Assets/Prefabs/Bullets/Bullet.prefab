@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28bf9efc68d3344f9ebf0588685d9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitStopDuration: 1
   remainingPenetration: 0
   currentSize: {x: 0.1, y: 0.15, z: 0.22}
   camShakeDuration: 0.1

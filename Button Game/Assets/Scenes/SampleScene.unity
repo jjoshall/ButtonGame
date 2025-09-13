@@ -989,7 +989,7 @@ PrefabInstance:
     - target: {fileID: 4114092795844932020, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
       propertyPath: enemyToSpawn
       value: 
-      objectReference: {fileID: 2024593858654122013, guid: 051acd51be09dc54294b478d8cd94b50, type: 3}
+      objectReference: {fileID: 2024593858654122013, guid: d0bcfad514cb79b49866a982a655fd02, type: 3}
     - target: {fileID: 4774193702589565141, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
       propertyPath: xpBar
       value: 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletCollisonHandler : MonoBehaviour
 {
     private float lifetime = 2f;
-    private float hitStopDuration = 3f;
+    [SerializeField] private float hitStopDuration = 3f;
     private int randomXP;
 
     // Penetrate upgrade

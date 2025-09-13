@@ -8,6 +8,12 @@ public class BasicEnemy : MonoBehaviour
     private GameObject target;
     [SerializeField] private float moveSpeed = 2f;
 
+    [Header("Zig Zag Movement")]
+    [SerializeField] private bool useZigZag = false;
+    [SerializeField] private float zigZagAmplitude = 1f;   // side-to-side distance
+    [SerializeField] private float zigZagFrequency = 5f;   // how fast to zig-zag
+    private float zigzagTimer;
+
     [Header("Enemy Settings")]
     [SerializeField] private float damage = 10f;
     [SerializeField] private int hitsToKill = 1;
@@ -34,21 +40,31 @@ public class BasicEnemy : MonoBehaviour
         if (spriteRenderer != null) {
             spriteRenderer.color = originalColor;
         }
-    }
 
-    private void Start() {
         target = PlayerMovement.Instance;
+        isKnockedBack = false;
+        zigzagTimer = 0f;
     }
 
     // Enemy movement
     private void Update() {
         if (isKnockedBack || target == null) return;
 
-        Vector2 direction = (target.transform.position - this.transform.position).normalized;
+        Vector2 direction = (target.transform.position - transform.position).normalized;
 
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Vector2 moveDir = direction;
 
-        transform.position = Vector2.MoveTowards(this.transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+        if (useZigZag) {
+            Vector2 perp = new Vector2(-direction.y, direction.x); // Perpendicular vector
+            float offset = Mathf.Sin(zigzagTimer * zigZagFrequency) * zigZagAmplitude;
+            moveDir = (direction + perp * offset).normalized;
+            zigzagTimer += Time.deltaTime;
+        }
+
+        // Move and rotate
+        transform.position += (Vector3)(moveDir * moveSpeed * Time.deltaTime);
+
+        float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(Vector3.forward * angle);
     }
 
