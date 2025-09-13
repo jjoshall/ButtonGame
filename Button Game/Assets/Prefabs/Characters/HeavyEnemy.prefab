@@ -164,3 +164,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   damage: 50
+  hitsToKill: 5
+  hitScale: 1.2
+  scaleDuration: 0.1
+  flashDuration: 0.1
+  spriteRenderer: {fileID: 2811311073365917859}
+  knockbackStrength: 0.5
+  knockbackTime: 0.3
+  originalScale: {x: 0.85, y: 0.85, z: 0.85}
+  originalColor: {r: 0.63529414, g: 0, b: 1, a: 1}

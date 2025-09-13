@@ -103,6 +103,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  damage: 10
+  hitsToKill: 2
+  hitScale: 1.2
+  scaleDuration: 0.1
+  flashDuration: 0.1
+  spriteRenderer: {fileID: 2811311073365917859}
+  knockbackStrength: 2
+  knockbackTime: 0.1
+  originalScale: {x: 0.85, y: 0.85, z: 0.85}
+  originalColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!61 &1212652090202420292
 BoxCollider2D:
   m_ObjectHideFlags: 0
