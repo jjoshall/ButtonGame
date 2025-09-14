@@ -34,7 +34,5 @@ public class RegBullet : MonoBehaviour
 
     public void UpgradeBulletForce(float multiplier) {
         bulletForce *= multiplier;
-
-        Debug.Log("Bullet force upgraded. New force: " + bulletForce);
     }
 }

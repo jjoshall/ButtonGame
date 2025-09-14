@@ -34,6 +34,8 @@ public class BasicEnemy : MonoBehaviour
     private bool isKnockedBack = false;
 
     private void OnEnable() {
+        EnemySpawner.ActiveEnemies.Add(gameObject);
+
         currentHits = hitsToKill;
 
         transform.localScale = originalScale;
@@ -134,5 +136,9 @@ public class BasicEnemy : MonoBehaviour
 
     public int ReturnHitsToKill() {
         return currentHits;
+    }
+
+    private void OnDisable() {
+        EnemySpawner.ActiveEnemies.Remove(gameObject);
     }
 }

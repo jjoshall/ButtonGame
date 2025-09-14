@@ -52,6 +52,7 @@ public class BulletCollisonHandler : MonoBehaviour
         remainingPenetration = UpgradeManager.BulletPenetration;
         currentSize = UpgradeManager.BulletSize;
         transform.localScale = currentSize;
+        CritXP = UpgradeManager.CritXPEnabled;
     }
 
     private void OnDisable() {
@@ -92,8 +93,8 @@ public class BulletCollisonHandler : MonoBehaviour
         }
         else {
             if (CritXP) {
-                // Have a 10% chance to get a large amount of XP on kill
-                int critChance = Random.Range(1, 11); // 1 to 10
+                // Have a 20% chance to crit for extra XP
+                int critChance = Random.Range(1, 6); // 1 to 5
 
                 if (critChance == 1) {
                     randomXP = Random.Range(70, 101); // Between 50 and 100 XP
@@ -171,10 +172,5 @@ public class BulletCollisonHandler : MonoBehaviour
 
     public void SetHitStopDuration(float duration) {
         hitStopDuration = duration;
-    }
-
-    public void EnableCritXPUpgrade() {
-        CritXP = true;
-        Debug.Log("CritXP on");
     }
 }

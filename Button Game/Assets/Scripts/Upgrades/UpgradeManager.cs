@@ -17,6 +17,7 @@ public class UpgradeManager : MonoBehaviour
 
     public static int BulletPenetration = 0;
     public static Vector3 BulletSize = new Vector3(0.1f, 0.15f, 0.22f);
+    public static bool CritXPEnabled = false;
 
     private bool hasCritXPUpgrade = false;
     private bool hasHealthPackDropUpgrade = false;
@@ -33,6 +34,7 @@ public class UpgradeManager : MonoBehaviour
 
         BulletSize = new Vector3(0.1f, 0.15f, 0.22f);
         BulletPenetration = 0;
+        CritXPEnabled = false;
     }
 
     public void GrantUpgrade(int level, GameObject player) {
@@ -49,32 +51,32 @@ public class UpgradeManager : MonoBehaviour
 
         // Tier 1 Upgrades
         if (tier == 1) {
-            upgrades.Add(() => {
-                playerHealth.UpgradeMaxHealth(25);
-                upgradeText.text = "UPGRADE: +25 MAX HEALTH";
-                upgradeText.gameObject.SetActive(true);
-            });
+            //upgrades.Add(() => {
+            //    playerHealth.UpgradeMaxHealth(25);
+            //    upgradeText.text = "UPGRADE: +25 MAX HEALTH";
+            //    upgradeText.gameObject.SetActive(true);
+            //});
 
             if (!hasCritXPUpgrade) {
                 upgrades.Add(() => {
-                    bulletHandler.EnableCritXPUpgrade();
+                    UpgradeManager.CritXPEnabled = true;
                     hasCritXPUpgrade = true;
-                    upgradeText.text = "UPGRADE: +10% CHANCE OF CRIT";
+                    upgradeText.text = "UPGRADE: +20% CHANCE OF CRIT";
                     upgradeText.gameObject.SetActive(true);
                 });
             }
 
-            upgrades.Add(() => {
-                playerMovement.UpgradeSlide(1.5f);
-                upgradeText.text = "UPGRADE: +50% DASH SPEED/DISTANCE";
-                upgradeText.gameObject.SetActive(true);
-            });
+            //upgrades.Add(() => {
+            //    playerMovement.UpgradeSlide(1.5f);
+            //    upgradeText.text = "UPGRADE: +50% DASH SPEED/DISTANCE";
+            //    upgradeText.gameObject.SetActive(true);
+            //});
             
         }
         else if (tier == 2) {
             if (!hasCritXPUpgrade) {
                 upgrades.Add(() => {
-                    bulletHandler.EnableCritXPUpgrade();
+                    UpgradeManager.CritXPEnabled = true;
                     hasCritXPUpgrade = true;
                     upgradeText.text = "UPGRADE: +10% CHANCE OF CRIT";
                     upgradeText.gameObject.SetActive(true);
@@ -129,7 +131,7 @@ public class UpgradeManager : MonoBehaviour
             }
             if (!hasCritXPUpgrade) {
                 upgrades.Add(() => {
-                    bulletHandler.EnableCritXPUpgrade();
+                    UpgradeManager.CritXPEnabled = true;
                     hasCritXPUpgrade = true;
                     upgradeText.text = "UPGRADE: +10% CHANCE OF CRIT";
                     upgradeText.gameObject.SetActive(true);

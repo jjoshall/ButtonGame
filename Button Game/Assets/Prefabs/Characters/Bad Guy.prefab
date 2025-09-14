@@ -102,7 +102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9f697effbe2f349999ef0c0220445f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 1.5
+  useZigZag: 0
+  zigZagAmplitude: 1
+  zigZagFrequency: 5
   damage: 10
   hitsToKill: 2
   hitScale: 1.2
@@ -172,4 +175,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPackPrefab: {fileID: 3508396298376730919, guid: a4cb72b802ddc18428a769c1021b7cc3, type: 3}
-  canDropHealthPack: 0
+  canDropHealthPack: 1
