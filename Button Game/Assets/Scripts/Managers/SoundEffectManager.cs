@@ -5,6 +5,7 @@ public class SoundEffectManager : MonoBehaviour
     public static SoundEffectManager Instance;
 
     [SerializeField] private AudioSource soundFXObject;
+    [SerializeField] private AudioSource musicSource; // dedicated music player
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -59,5 +60,23 @@ public class SoundEffectManager : MonoBehaviour
 
         // destroy clip after its done playing
         Destroy(audioSource.gameObject, clipLength);
+    }
+
+    public void PlayMusic(AudioClip musicClip, float volume = 0.5f) {
+        if (musicSource == null) {
+            Debug.LogError("Music Source is not assigned in SoundEffectManager.");
+            return;
+        }
+
+        musicSource.clip = musicClip;
+        musicSource.volume = volume;
+        musicSource.Play();
+    }
+
+    // Optional: Stop music
+    public void StopMusic() {
+        if (musicSource != null && musicSource.isPlaying) {
+            musicSource.Stop();
+        }
     }
 }

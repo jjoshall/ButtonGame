@@ -302,7 +302,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -26, y: 249}
-  m_SizeDelta: {x: 663.21, y: 293.05}
+  m_SizeDelta: {x: 804.12, y: 293.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &845074752040739695
 CanvasRenderer:
@@ -332,7 +332,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU DIED.
+  m_text: 'GAME OVER.
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -664,6 +666,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1bdaafb269b5e9649875f28a815f9386, type: 3}
   - {fileID: 8300000, guid: 5e94465b50805f641acd69b8f11f9c85, type: 3}
   - {fileID: 8300000, guid: 8522d9d432d343141b0aa5ff3e3308fd, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 75aea721fc26cbc47b1407a0567c432d, type: 3}
   slideForceAmt: 500
   maxSpeed: 5
   dragAmt: 2
@@ -860,7 +863,7 @@ RectTransform:
   m_GameObject: {fileID: 8269097912572726529}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.0044103, y: 4.0044103, z: 4.0044103}
+  m_LocalScale: {x: 4.8064938, y: 4.8064938, z: 4.8064938}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6425810997410737349}
@@ -930,9 +933,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 1, g: 0.14074075, b: 0, a: 1}
+    m_HighlightedColor: {r: 0.63522005, g: 0.08967813, b: 0, a: 1}
+    m_PressedColor: {r: 0.3773585, g: 0.05357559, b: 0, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1102,8 +1105,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

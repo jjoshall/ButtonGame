@@ -78,7 +78,7 @@ public class UpgradeManager : MonoBehaviour
                 upgrades.Add(() => {
                     UpgradeManager.CritXPEnabled = true;
                     hasCritXPUpgrade = true;
-                    upgradeText.text = "UPGRADE: +10% CHANCE OF CRIT";
+                    upgradeText.text = "UPGRADE: +20% CHANCE OF CRIT";
                     upgradeText.gameObject.SetActive(true);
                 });
             }
@@ -133,7 +133,7 @@ public class UpgradeManager : MonoBehaviour
                 upgrades.Add(() => {
                     UpgradeManager.CritXPEnabled = true;
                     hasCritXPUpgrade = true;
-                    upgradeText.text = "UPGRADE: +10% CHANCE OF CRIT";
+                    upgradeText.text = "UPGRADE: +20% CHANCE OF CRIT";
                     upgradeText.gameObject.SetActive(true);
                 });
             }

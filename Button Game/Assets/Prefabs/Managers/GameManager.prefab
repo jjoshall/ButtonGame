@@ -73,9 +73,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb7ac30c5a89984e99a2ae8109284c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swarmTxt: {fileID: 0}
   spawnTimer: 1
   spawnRadius: 15
-  enemyToSpawn: {fileID: 2024593858654122013, guid: 1a9246d210c9bd14ebcbfa202a9e0304, type: 3}
+  safeRadius: 5
+  maxActiveEnemies: 25
+  baseEnemiesPerSpawn: 1
+  levelsPerIncrease: 3
+  maxEnemiesPerSpawn: 8
+  normalEnemy: {fileID: 0}
+  fastEnemy: {fileID: 0}
+  heavyEnemy: {fileID: 0}
 --- !u!114 &4774193702589565141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +103,9 @@ MonoBehaviour:
   playerPos: {fileID: 2614855445429720732, guid: 63ba28420d1823a4889ae9b99831eee3, type: 3}
   camShakeDuration: 0.3
   camShakeMagnitude: 0.2
+  lvlUpSound: {fileID: 0}
+  baseXPRequired: 100
+  xpGrowthRate: 1.1
 --- !u!114 &6891013153798992761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,3 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundFXObject: {fileID: 5060600837752359373, guid: b729e5c93c87f294cb706cf358983f32, type: 3}
+  musicSource: {fileID: 4882967446912551839, guid: 938daedf148166c44a58171e480a9cb9, type: 3}

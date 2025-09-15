@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private ParticleSystem dashEffect; // Reference to the dash effect particle system
     [SerializeField] private ShotFeedback shotFeedback; // Reference to the shot feedback script
     [SerializeField] private AudioClip[] shootSounds; // Array of shooting sound effects
+    [SerializeField] private AudioClip backgroundMusic; // Background music clip
 
     [Header("Dash Settings")]
     [SerializeField] private float slideForceAmt = 50f;
@@ -23,6 +24,8 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Awake() {
         Instance = gameObject;
+
+        SoundEffectManager.Instance.PlayMusic(backgroundMusic, 0.5f);
     }
 
     private void FixedUpdate() {
@@ -103,7 +106,5 @@ public class PlayerMovement : MonoBehaviour {
     public void UpgradeSlide(float multiplier) {
         slideForceAmt *= multiplier;
         dragAmt *= 1f / multiplier;     // mult = 1.2 means 20% longer slides
-
-        Debug.Log("Upgraded slide: " + slideForceAmt + ", drag: " + dragAmt);
     }
 }
