@@ -51,11 +51,11 @@ public class UpgradeManager : MonoBehaviour
 
         // Tier 1 Upgrades
         if (tier == 1) {
-            //upgrades.Add(() => {
-            //    playerHealth.UpgradeMaxHealth(25);
-            //    upgradeText.text = "UPGRADE: +25 MAX HEALTH";
-            //    upgradeText.gameObject.SetActive(true);
-            //});
+            upgrades.Add(() => {
+                playerHealth.UpgradeMaxHealth(25);
+                upgradeText.text = "UPGRADE: +25 MAX HEALTH";
+                upgradeText.gameObject.SetActive(true);
+            });
 
             if (!hasCritXPUpgrade) {
                 upgrades.Add(() => {
@@ -66,12 +66,12 @@ public class UpgradeManager : MonoBehaviour
                 });
             }
 
-            //upgrades.Add(() => {
-            //    playerMovement.UpgradeSlide(1.5f);
-            //    upgradeText.text = "UPGRADE: +50% DASH SPEED/DISTANCE";
-            //    upgradeText.gameObject.SetActive(true);
-            //});
-            
+            upgrades.Add(() => {
+                playerMovement.UpgradeSlide(1.5f);
+                upgradeText.text = "UPGRADE: +50% DASH SPEED/DISTANCE";
+                upgradeText.gameObject.SetActive(true);
+            });
+
         }
         else if (tier == 2) {
             if (!hasCritXPUpgrade) {

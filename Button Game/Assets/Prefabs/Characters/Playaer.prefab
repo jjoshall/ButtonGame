@@ -657,7 +657,6 @@ MonoBehaviour:
   playerRb: {fileID: 4493934888198486447}
   gun: {fileID: 593332871447700140}
   gunPivot: {fileID: 6077225871966888752}
-  bulletPrefab: {fileID: 9100421380994185438, guid: 0c8232dc723b0d74baf01c823a361672, type: 3}
   regBullet: {fileID: -80030245510144035}
   dashEffect: {fileID: 6224653128371713681, guid: f8fc104b200510440bb1c0e2ca721fde, type: 3}
   shotFeedback: {fileID: 3075295749106761740}
@@ -683,6 +682,7 @@ MonoBehaviour:
   bulletForce: 10
   bulletLifetime: 2
   hitStopDuration: 0.05
+  bulletPrefab: {fileID: 0}
 --- !u!114 &3075295749106761740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,7 +744,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 32713ee882084374a8b7d517db5c1957, type: 3}
   - {fileID: 8300000, guid: bef3d1ded6fce12489792c99729becbb, type: 3}
   deathSound: {fileID: 8300000, guid: 87a090fc3dc905a45b8df64922ea3b45, type: 3}
-  healthPackPrefab: {fileID: 0}
+  healthPickupSound: {fileID: 8300000, guid: 25d92f4fc7a092545a66f2527fde966d, type: 3}
 --- !u!1 &8011742632936024864
 GameObject:
   m_ObjectHideFlags: 0

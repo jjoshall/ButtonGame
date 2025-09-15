@@ -13,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Button restartButton; // Reference to the restart button UI element
     [SerializeField] private AudioClip[] hurtSounds; // Array of hurt sound effects
     [SerializeField] private AudioClip deathSound; // Death sound effect
+    [SerializeField] private AudioClip healthPickupSound; // Health pickup sound effect
 
     private void Start() {
         currentHealth = maxHealth;
@@ -53,6 +54,9 @@ public class PlayerHealth : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("HealthPack")) {
             Heal(15f); // Heal the player by 25 health points
+
+            SoundEffectManager.Instance.PlaySoundFXClip(healthPickupSound, transform, 1f);
+
             ObjectPoolManager.ReturnObjectToPool(collision.gameObject);
         }
     }
