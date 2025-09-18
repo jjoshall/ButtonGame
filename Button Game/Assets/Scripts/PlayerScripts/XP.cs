@@ -14,6 +14,8 @@ public class XP : MonoBehaviour
     [SerializeField] private float camShakeDuration = 0.3f;
     [SerializeField] private float camShakeMagnitude = 0.2f;
     [SerializeField] private AudioClip lvlUpSound;
+    [SerializeField] private AudioClip backgroundMusic; // Background music clip
+
 
     [SerializeField] private int baseXPRequired = 100;
     [SerializeField] private float xpGrowthRate = 1.10f;
@@ -27,6 +29,8 @@ public class XP : MonoBehaviour
         }
 
         Instance = this;
+
+        SoundEffectManager.Instance.PlayLoopingMusic(backgroundMusic, playerPos, 0.5f);
     }
 
     private void OnDestroy() {
