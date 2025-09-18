@@ -28,7 +28,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject heavyEnemy;
     //[SerializeField] private GameObject enemyToSpawn;
 
+    [SerializeField] private AudioClip backgroundMusic; // Background music clip
+
     public static readonly HashSet<GameObject> ActiveEnemies = new HashSet<GameObject>();
+
+    private void Start() {
+        SoundEffectManager.Instance.PlayLoopingMusic(backgroundMusic, transform, 0.5f);
+    }
 
     private void Update() {
         if (spawningPaused) return;

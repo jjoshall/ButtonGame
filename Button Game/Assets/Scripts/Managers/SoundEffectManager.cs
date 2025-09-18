@@ -5,6 +5,7 @@ public class SoundEffectManager : MonoBehaviour
     public static SoundEffectManager Instance;
 
     [SerializeField] private AudioSource soundFXObject;
+    [SerializeField] private AudioSource musicObject;
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -63,7 +64,7 @@ public class SoundEffectManager : MonoBehaviour
 
     public void PlayLoopingMusic(AudioClip audioClip, Transform spawnTransform, float volume) {
         // spawn in gameobject
-        AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
+        AudioSource audioSource = Instantiate(musicObject, spawnTransform.position, Quaternion.identity);
 
         // assign the audioClip
         audioSource.clip = audioClip;

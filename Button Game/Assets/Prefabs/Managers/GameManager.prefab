@@ -85,6 +85,7 @@ MonoBehaviour:
   normalEnemy: {fileID: 2024593858654122013, guid: 1a9246d210c9bd14ebcbfa202a9e0304, type: 3}
   fastEnemy: {fileID: 2024593858654122013, guid: d0bcfad514cb79b49866a982a655fd02, type: 3}
   heavyEnemy: {fileID: 2024593858654122013, guid: 051acd51be09dc54294b478d8cd94b50, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 75aea721fc26cbc47b1407a0567c432d, type: 3}
 --- !u!114 &4774193702589565141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +106,6 @@ MonoBehaviour:
   camShakeDuration: 0.3
   camShakeMagnitude: 0.2
   lvlUpSound: {fileID: 8300000, guid: 65468584206889342a0fee42809e7aac, type: 3}
-  backgroundMusic: {fileID: 8300000, guid: 75aea721fc26cbc47b1407a0567c432d, type: 3}
   baseXPRequired: 100
   xpGrowthRate: 1.15
 --- !u!114 &6891013153798992761
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundFXObject: {fileID: 5060600837752359373, guid: b729e5c93c87f294cb706cf358983f32, type: 3}
+  musicObject: {fileID: 4882967446912551839, guid: 938daedf148166c44a58171e480a9cb9, type: 3}
 --- !u!114 &3278974841986901319
 MonoBehaviour:
   m_ObjectHideFlags: 0
