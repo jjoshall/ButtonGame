@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4114092795844932020}
   - component: {fileID: 4774193702589565141}
   - component: {fileID: 6891013153798992761}
+  - component: {fileID: 3278974841986901319}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -74,16 +75,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swarmTxt: {fileID: 0}
-  spawnTimer: 1
+  spawnTimer: 2
   spawnRadius: 15
   safeRadius: 5
   maxActiveEnemies: 25
   baseEnemiesPerSpawn: 1
   levelsPerIncrease: 3
   maxEnemiesPerSpawn: 8
-  normalEnemy: {fileID: 0}
-  fastEnemy: {fileID: 0}
-  heavyEnemy: {fileID: 0}
+  normalEnemy: {fileID: 2024593858654122013, guid: 1a9246d210c9bd14ebcbfa202a9e0304, type: 3}
+  fastEnemy: {fileID: 2024593858654122013, guid: d0bcfad514cb79b49866a982a655fd02, type: 3}
+  heavyEnemy: {fileID: 2024593858654122013, guid: 051acd51be09dc54294b478d8cd94b50, type: 3}
 --- !u!114 &4774193702589565141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,16 +97,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d1a4e57d95bd848918540c80962437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xpBar: {fileID: 940038124619793650, guid: 6dc7f8abf582f2e49bdfc0942206d92a, type: 3}
+  xpBar: {fileID: 0}
   lvlNum: 1
-  lvlTxt: {fileID: 1455479684455646637, guid: 4aaad6282cf2c844b8ac017520521f02, type: 3}
+  lvlTxt: {fileID: 0}
   lvlUpEffect: {fileID: 3953871463556945303, guid: bcef07b76c4e63c4eb5c5b3889f8d586, type: 3}
-  playerPos: {fileID: 2614855445429720732, guid: 63ba28420d1823a4889ae9b99831eee3, type: 3}
+  playerPos: {fileID: 0}
   camShakeDuration: 0.3
   camShakeMagnitude: 0.2
-  lvlUpSound: {fileID: 0}
+  lvlUpSound: {fileID: 8300000, guid: 65468584206889342a0fee42809e7aac, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 75aea721fc26cbc47b1407a0567c432d, type: 3}
   baseXPRequired: 100
-  xpGrowthRate: 1.1
+  xpGrowthRate: 1.15
 --- !u!114 &6891013153798992761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,4 +121,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundFXObject: {fileID: 5060600837752359373, guid: b729e5c93c87f294cb706cf358983f32, type: 3}
-  musicSource: {fileID: 4882967446912551839, guid: 938daedf148166c44a58171e480a9cb9, type: 3}
+--- !u!114 &3278974841986901319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2301403384089867049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce41a66403e88234c90b6ffd988d5c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeText: {fileID: 0}
+  playerHealth: {fileID: 0}
+  regBullet: {fileID: 0}
+  playerMovement: {fileID: 0}
+  bulletHandler: {fileID: 6614747258552662986, guid: 0c8232dc723b0d74baf01c823a361672, type: 3}
+  enemyDrops: {fileID: 8267188321828578027, guid: 1a9246d210c9bd14ebcbfa202a9e0304, type: 3}

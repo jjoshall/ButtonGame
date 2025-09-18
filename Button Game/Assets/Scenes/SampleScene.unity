@@ -119,29 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &337585604 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2301403384089867049, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
-  m_PrefabInstance: {fileID: 2346932656830419986}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &337585611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 337585604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce41a66403e88234c90b6ffd988d5c1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeText: {fileID: 684158038}
-  playerHealth: {fileID: 1247114064487967807}
-  regBullet: {fileID: 1247114064487967809}
-  playerMovement: {fileID: 1247114064487967810}
-  bulletHandler: {fileID: 6614747258552662986, guid: 0c8232dc723b0d74baf01c823a361672, type: 3}
-  enemyDrops: {fileID: 8267188321828578027, guid: 1a9246d210c9bd14ebcbfa202a9e0304, type: 3}
 --- !u!1001 &491649191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1011,30 +988,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3278974841986901319, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
+      propertyPath: regBullet
+      value: 
+      objectReference: {fileID: 1247114064487967809}
+    - target: {fileID: 3278974841986901319, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
+      propertyPath: upgradeText
+      value: 
+      objectReference: {fileID: 684158038}
+    - target: {fileID: 3278974841986901319, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 1247114064487967807}
+    - target: {fileID: 3278974841986901319, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 1247114064487967810}
     - target: {fileID: 4114092795844932020, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
       propertyPath: swarmTxt
       value: 
       objectReference: {fileID: 8441866352079758441}
-    - target: {fileID: 4114092795844932020, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
-      propertyPath: fastEnemy
-      value: 
-      objectReference: {fileID: 2024593858654122013, guid: d0bcfad514cb79b49866a982a655fd02, type: 3}
-    - target: {fileID: 4114092795844932020, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
-      propertyPath: heavyEnemy
-      value: 
-      objectReference: {fileID: 2024593858654122013, guid: 051acd51be09dc54294b478d8cd94b50, type: 3}
-    - target: {fileID: 4114092795844932020, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
-      propertyPath: spawnTimer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4114092795844932020, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
-      propertyPath: normalEnemy
-      value: 
-      objectReference: {fileID: 2024593858654122013, guid: 1a9246d210c9bd14ebcbfa202a9e0304, type: 3}
-    - target: {fileID: 4114092795844932020, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
-      propertyPath: enemyToSpawn
-      value: 
-      objectReference: {fileID: 2024593858654122013, guid: d0bcfad514cb79b49866a982a655fd02, type: 3}
     - target: {fileID: 4774193702589565141, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
       propertyPath: xpBar
       value: 
@@ -1047,33 +1020,10 @@ PrefabInstance:
       propertyPath: playerPos
       value: 
       objectReference: {fileID: 1247114064487967806}
-    - target: {fileID: 4774193702589565141, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
-      propertyPath: lvlUpSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 65468584206889342a0fee42809e7aac, type: 3}
-    - target: {fileID: 4774193702589565141, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
-      propertyPath: xpGrowthRate
-      value: 1.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774193702589565141, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
-      propertyPath: upgradeScreen
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774193702589565141, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
-      propertyPath: backgroundMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: 75aea721fc26cbc47b1407a0567c432d, type: 3}
-    - target: {fileID: 6891013153798992761, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
-      propertyPath: musicSource
-      value: 
-      objectReference: {fileID: 4882967446912551839, guid: 938daedf148166c44a58171e480a9cb9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2301403384089867049, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 337585611}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1595fb54c2b597847a826d95a9e4a188, type: 3}
 --- !u!1001 &7005518175625898485
 PrefabInstance:
